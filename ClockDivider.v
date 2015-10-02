@@ -20,6 +20,5 @@ module ClockDivider(clock, reset, clockOut);
 		else
 			counter <= counter + 1;
 	end
-	
-	
+
 endmodule

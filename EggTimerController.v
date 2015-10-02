@@ -2,11 +2,10 @@
 //Egg Time Controller
 //Mashal Mannan, Joon Kim
 
-module EggTimerController(clk, reset, KEY, SW, HEX3, HEX2, HEX1, HEX0, LEDR);
+module EggTimerController(CLOCK_50, KEY, SW, HEX3, HEX2, HEX1, HEX0, LEDR);
 	
-	input clk;
-	input reset;	
-	input [1:0] KEY;
+	input CLOCK_50;
+	input [2:0] KEY;
 	input[7:0] SW;
 	
 	output[6:0] HEX3;
@@ -15,23 +14,42 @@ module EggTimerController(clk, reset, KEY, SW, HEX3, HEX2, HEX1, HEX0, LEDR);
 	output[6:0] HEX0;
 	output[9:0] LEDR;
 
-
+	wire reset;
+	wire clk;
+	
+	assign reset = KEY[0];
+	assign clk = CLOCK_50;
 	//state machine logic
-	//ControlUnit cu(clk, reset, KEY[1], KEY[2], SW, minsTens, minsOnes, SecsTens, SecsOnes, LEDR);
+	wire decEn, swSecsEn, swMinsEn;
+	TimerController sm(clk, reset, KEY[1], KEY[2], minsIsDone & secsIsDone, 
+	swSecEn, swMinEn, decEn, flashEn, inRunTimerState);
+
 	//validate the switch inputs
-	SwitchProcess(minsTens, minsOnes, SecsTens, SecsOnes, 
-	minutesTens, minutesOnes, SecondsTens, SecondsOnes);
+	wire secondsVal;
+	SwitchValidator svSecs(clk, swSecsEn, SW, secondsVals);
+	
+	wire minutesVal;
+	SwitchValidator svMins(clk, swMinsEn, SW, minutesVal);
 
 	//decrement only after every second
-	ClockDivider cd(clk, reset, clkOut);
-
+	ClockDivider cd(clk, reset, freqEn, clkOut);
 	wire clkOut;
-	wire[3:0] secondsOnes, secondsTens, minutesOnes, minutesTens;
+	
+	//have a mux with output val of decSave?
+	wire isSecsDone;
+	DecrementTime decSecs(clk, reset, decSave[3:0], decEn & clkOut, secondsVals, isSecsDone);
+	
+	wire isMinsDone;
+	DecrementTime decMins(clk, reset, decSave[7:4], decEn & isSecsDone & clkOut, minutesVal, isMinsDone);
+	
+	wire[9:0] leds;
+	assign LEDR[9:0] = leds[9:0];
+	flashLights fl(clk, flashEn & clkOut, leds)
 
 	//have each seven seg display the time
-	dec2_7seg(secondsOnes, HEX0);
-	dec2_7seg(secondsTens, HEX1);
-	dec2_7seg(minutesOnes, HEX2);
-	dec2_7seg(minutesTens, HEX3);
+	dec2_7seg(secondsVal[3:0], HEX0);
+	dec2_7seg(secondsVal[7:4], HEX1);
+	dec2_7seg(minutesVal[3:0], HEX2);
+	dec2_7seg(minutesTens[7:4], HEX3);
 
 endmodule
