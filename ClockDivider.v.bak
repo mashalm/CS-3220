@@ -1,0 +1,5 @@
+module ClockDivider(clock, reset, clockOut);
+
+	input clock;
+	input reset;
+	output clockOut;

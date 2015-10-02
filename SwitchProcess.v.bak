@@ -1,0 +1,2 @@
+module SwitchProcess(minsTens, minsOnes, SecsTens, SecsOnes, 
+	minutesTens, minutesOnes, SecondsTens, SecondsOnes)
