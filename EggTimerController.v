@@ -32,7 +32,7 @@ module EggTimerController(CLOCK_50, KEY, SW, HEX3, HEX2, HEX1, HEX0, LEDR);
 	SwitchValidator svMins(clk, swMinsEn, SW, minutesVal);
 
 	//decrement only after every second
-	ClockDivider cd(clk, reset, freqEn, clkOut);
+	ClockDivider cd(clk, reset, flashEn, clkOut);
 	wire clkOut;
 	
 	//have a mux with output val of decSave?
