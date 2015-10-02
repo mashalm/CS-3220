@@ -1,6 +1,6 @@
-module flashLights(clk, flashEn, ledr)
+module flashLights(clk, flashEn, ledr);
 
-	input clk, reset, flashEn;
+	input clk, flashEn;
 	output[9:0] ledr;
 	
 	reg[9:0] ledr;

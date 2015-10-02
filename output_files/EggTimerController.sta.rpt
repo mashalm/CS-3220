@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for EggTimerController
-Fri Oct 02 00:27:22 2015
+Fri Oct 02 19:49:29 2015
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -16,19 +16,42 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   8. Slow Model Recovery Summary
   9. Slow Model Removal Summary
  10. Slow Model Minimum Pulse Width Summary
- 11. Slow Model Datasheet Report
- 12. Fast Model Setup Summary
- 13. Fast Model Hold Summary
- 14. Fast Model Recovery Summary
- 15. Fast Model Removal Summary
- 16. Fast Model Minimum Pulse Width Summary
- 17. Fast Model Datasheet Report
- 18. Multicorner Timing Analysis Summary
- 19. Clock Transfers
- 20. Report TCCS
- 21. Report RSKM
- 22. Unconstrained Paths
- 23. TimeQuest Timing Analyzer Messages
+ 11. Slow Model Setup: 'CLOCK_50'
+ 12. Slow Model Setup: 'TimerController:sm|state.Reset'
+ 13. Slow Model Hold: 'CLOCK_50'
+ 14. Slow Model Hold: 'TimerController:sm|state.Reset'
+ 15. Slow Model Minimum Pulse Width: 'CLOCK_50'
+ 16. Slow Model Minimum Pulse Width: 'TimerController:sm|state.Reset'
+ 17. Setup Times
+ 18. Hold Times
+ 19. Clock to Output Times
+ 20. Minimum Clock to Output Times
+ 21. Fast Model Setup Summary
+ 22. Fast Model Hold Summary
+ 23. Fast Model Recovery Summary
+ 24. Fast Model Removal Summary
+ 25. Fast Model Minimum Pulse Width Summary
+ 26. Fast Model Setup: 'CLOCK_50'
+ 27. Fast Model Setup: 'TimerController:sm|state.Reset'
+ 28. Fast Model Hold: 'CLOCK_50'
+ 29. Fast Model Hold: 'TimerController:sm|state.Reset'
+ 30. Fast Model Minimum Pulse Width: 'CLOCK_50'
+ 31. Fast Model Minimum Pulse Width: 'TimerController:sm|state.Reset'
+ 32. Setup Times
+ 33. Hold Times
+ 34. Clock to Output Times
+ 35. Minimum Clock to Output Times
+ 36. Multicorner Timing Analysis Summary
+ 37. Setup Times
+ 38. Hold Times
+ 39. Clock to Output Times
+ 40. Minimum Clock to Output Times
+ 41. Setup Transfers
+ 42. Hold Transfers
+ 43. Report TCCS
+ 44. Report RSKM
+ 45. Unconstrained Paths
+ 46. TimeQuest Timing Analyzer Messages
 
 
 
@@ -75,28 +98,44 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-----------
-; Clocks ;
-----------
-No clocks to report.
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                                                                         ;
++--------------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+------------------------------------+
+; Clock Name                     ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets                            ;
++--------------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+------------------------------------+
+; CLOCK_50                       ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { CLOCK_50 }                       ;
+; TimerController:sm|state.Reset ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { TimerController:sm|state.Reset } ;
++--------------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+------------------------------------+
 
 
----------------------------
-; Slow Model Fmax Summary ;
----------------------------
-No paths to report.
++-------------------------------------------------+
+; Slow Model Fmax Summary                         ;
++-----------+-----------------+------------+------+
+; Fmax      ; Restricted Fmax ; Clock Name ; Note ;
++-----------+-----------------+------------+------+
+; 228.0 MHz ; 228.0 MHz       ; CLOCK_50   ;      ;
++-----------+-----------------+------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
-----------------------------
-; Slow Model Setup Summary ;
-----------------------------
-No paths to report.
++---------------------------------------------------------+
+; Slow Model Setup Summary                                ;
++--------------------------------+--------+---------------+
+; Clock                          ; Slack  ; End Point TNS ;
++--------------------------------+--------+---------------+
+; CLOCK_50                       ; -3.386 ; -97.994       ;
+; TimerController:sm|state.Reset ; -2.111 ; -2.111        ;
++--------------------------------+--------+---------------+
 
 
----------------------------
-; Slow Model Hold Summary ;
----------------------------
-No paths to report.
++---------------------------------------------------------+
+; Slow Model Hold Summary                                 ;
++--------------------------------+--------+---------------+
+; Clock                          ; Slack  ; End Point TNS ;
++--------------------------------+--------+---------------+
+; CLOCK_50                       ; -2.686 ; -4.884        ;
+; TimerController:sm|state.Reset ; 1.501  ; 0.000         ;
++--------------------------------+--------+---------------+
 
 
 -------------------------------
@@ -111,28 +150,458 @@ No paths to report.
 No paths to report.
 
 
-------------------------------------------
-; Slow Model Minimum Pulse Width Summary ;
-------------------------------------------
-No paths to report.
++---------------------------------------------------------+
+; Slow Model Minimum Pulse Width Summary                  ;
++--------------------------------+--------+---------------+
+; Clock                          ; Slack  ; End Point TNS ;
++--------------------------------+--------+---------------+
+; CLOCK_50                       ; -1.631 ; -46.845       ;
+; TimerController:sm|state.Reset ; 0.500  ; 0.000         ;
++--------------------------------+--------+---------------+
 
 
--------------------------------
-; Slow Model Datasheet Report ;
--------------------------------
-Nothing to report.
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Setup: 'CLOCK_50'                                                                                                             ;
++--------+-----------------------------+-----------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                   ; To Node                     ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+-----------------------------+-----------------------------+--------------+-------------+--------------+------------+------------+
+; -3.386 ; ClockDivider:cd|counter[0]  ; ClockDivider:cd|counter[0]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.424      ;
+; -3.386 ; ClockDivider:cd|counter[0]  ; ClockDivider:cd|counter[1]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.424      ;
+; -3.386 ; ClockDivider:cd|counter[0]  ; ClockDivider:cd|counter[2]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.424      ;
+; -3.386 ; ClockDivider:cd|counter[0]  ; ClockDivider:cd|counter[3]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.424      ;
+; -3.386 ; ClockDivider:cd|counter[0]  ; ClockDivider:cd|counter[4]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.424      ;
+; -3.386 ; ClockDivider:cd|counter[0]  ; ClockDivider:cd|counter[5]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.424      ;
+; -3.386 ; ClockDivider:cd|counter[0]  ; ClockDivider:cd|counter[6]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.424      ;
+; -3.386 ; ClockDivider:cd|counter[0]  ; ClockDivider:cd|counter[7]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.424      ;
+; -3.386 ; ClockDivider:cd|counter[0]  ; ClockDivider:cd|counter[8]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.424      ;
+; -3.386 ; ClockDivider:cd|counter[0]  ; ClockDivider:cd|counter[9]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.424      ;
+; -3.386 ; ClockDivider:cd|counter[0]  ; ClockDivider:cd|counter[10] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.424      ;
+; -3.386 ; ClockDivider:cd|counter[0]  ; ClockDivider:cd|counter[11] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.424      ;
+; -3.386 ; ClockDivider:cd|counter[0]  ; ClockDivider:cd|counter[12] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.424      ;
+; -3.322 ; ClockDivider:cd|counter[2]  ; ClockDivider:cd|counter[0]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.360      ;
+; -3.322 ; ClockDivider:cd|counter[2]  ; ClockDivider:cd|counter[1]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.360      ;
+; -3.322 ; ClockDivider:cd|counter[2]  ; ClockDivider:cd|counter[2]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.360      ;
+; -3.322 ; ClockDivider:cd|counter[2]  ; ClockDivider:cd|counter[3]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.360      ;
+; -3.322 ; ClockDivider:cd|counter[2]  ; ClockDivider:cd|counter[4]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.360      ;
+; -3.322 ; ClockDivider:cd|counter[2]  ; ClockDivider:cd|counter[5]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.360      ;
+; -3.322 ; ClockDivider:cd|counter[2]  ; ClockDivider:cd|counter[6]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.360      ;
+; -3.322 ; ClockDivider:cd|counter[2]  ; ClockDivider:cd|counter[7]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.360      ;
+; -3.322 ; ClockDivider:cd|counter[2]  ; ClockDivider:cd|counter[8]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.360      ;
+; -3.322 ; ClockDivider:cd|counter[2]  ; ClockDivider:cd|counter[9]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.360      ;
+; -3.322 ; ClockDivider:cd|counter[2]  ; ClockDivider:cd|counter[10] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.360      ;
+; -3.322 ; ClockDivider:cd|counter[2]  ; ClockDivider:cd|counter[11] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.360      ;
+; -3.322 ; ClockDivider:cd|counter[2]  ; ClockDivider:cd|counter[12] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.360      ;
+; -3.319 ; ClockDivider:cd|counter[10] ; ClockDivider:cd|counter[0]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.357      ;
+; -3.319 ; ClockDivider:cd|counter[10] ; ClockDivider:cd|counter[1]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.357      ;
+; -3.319 ; ClockDivider:cd|counter[10] ; ClockDivider:cd|counter[2]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.357      ;
+; -3.319 ; ClockDivider:cd|counter[10] ; ClockDivider:cd|counter[3]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.357      ;
+; -3.319 ; ClockDivider:cd|counter[10] ; ClockDivider:cd|counter[4]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.357      ;
+; -3.319 ; ClockDivider:cd|counter[10] ; ClockDivider:cd|counter[5]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.357      ;
+; -3.319 ; ClockDivider:cd|counter[10] ; ClockDivider:cd|counter[6]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.357      ;
+; -3.319 ; ClockDivider:cd|counter[10] ; ClockDivider:cd|counter[7]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.357      ;
+; -3.319 ; ClockDivider:cd|counter[10] ; ClockDivider:cd|counter[8]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.357      ;
+; -3.319 ; ClockDivider:cd|counter[10] ; ClockDivider:cd|counter[9]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.357      ;
+; -3.319 ; ClockDivider:cd|counter[10] ; ClockDivider:cd|counter[10] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.357      ;
+; -3.319 ; ClockDivider:cd|counter[10] ; ClockDivider:cd|counter[11] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.357      ;
+; -3.319 ; ClockDivider:cd|counter[10] ; ClockDivider:cd|counter[12] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.357      ;
+; -3.297 ; ClockDivider:cd|counter[5]  ; ClockDivider:cd|counter[0]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.335      ;
+; -3.297 ; ClockDivider:cd|counter[5]  ; ClockDivider:cd|counter[1]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.335      ;
+; -3.297 ; ClockDivider:cd|counter[5]  ; ClockDivider:cd|counter[2]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.335      ;
+; -3.297 ; ClockDivider:cd|counter[5]  ; ClockDivider:cd|counter[3]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.335      ;
+; -3.297 ; ClockDivider:cd|counter[5]  ; ClockDivider:cd|counter[4]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.335      ;
+; -3.297 ; ClockDivider:cd|counter[5]  ; ClockDivider:cd|counter[5]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.335      ;
+; -3.297 ; ClockDivider:cd|counter[5]  ; ClockDivider:cd|counter[6]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.335      ;
+; -3.297 ; ClockDivider:cd|counter[5]  ; ClockDivider:cd|counter[7]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.335      ;
+; -3.297 ; ClockDivider:cd|counter[5]  ; ClockDivider:cd|counter[8]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.335      ;
+; -3.297 ; ClockDivider:cd|counter[5]  ; ClockDivider:cd|counter[9]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.335      ;
+; -3.297 ; ClockDivider:cd|counter[5]  ; ClockDivider:cd|counter[10] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.335      ;
+; -3.297 ; ClockDivider:cd|counter[5]  ; ClockDivider:cd|counter[11] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.335      ;
+; -3.297 ; ClockDivider:cd|counter[5]  ; ClockDivider:cd|counter[12] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.335      ;
+; -3.295 ; ClockDivider:cd|counter[1]  ; ClockDivider:cd|counter[0]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.333      ;
+; -3.295 ; ClockDivider:cd|counter[1]  ; ClockDivider:cd|counter[1]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.333      ;
+; -3.295 ; ClockDivider:cd|counter[1]  ; ClockDivider:cd|counter[2]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.333      ;
+; -3.295 ; ClockDivider:cd|counter[1]  ; ClockDivider:cd|counter[3]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.333      ;
+; -3.295 ; ClockDivider:cd|counter[1]  ; ClockDivider:cd|counter[4]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.333      ;
+; -3.295 ; ClockDivider:cd|counter[1]  ; ClockDivider:cd|counter[5]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.333      ;
+; -3.295 ; ClockDivider:cd|counter[1]  ; ClockDivider:cd|counter[6]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.333      ;
+; -3.295 ; ClockDivider:cd|counter[1]  ; ClockDivider:cd|counter[7]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.333      ;
+; -3.295 ; ClockDivider:cd|counter[1]  ; ClockDivider:cd|counter[8]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.333      ;
+; -3.295 ; ClockDivider:cd|counter[1]  ; ClockDivider:cd|counter[9]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.333      ;
+; -3.295 ; ClockDivider:cd|counter[1]  ; ClockDivider:cd|counter[10] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.333      ;
+; -3.295 ; ClockDivider:cd|counter[1]  ; ClockDivider:cd|counter[11] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.333      ;
+; -3.295 ; ClockDivider:cd|counter[1]  ; ClockDivider:cd|counter[12] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.333      ;
+; -3.263 ; ClockDivider:cd|counter[4]  ; ClockDivider:cd|counter[0]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.301      ;
+; -3.263 ; ClockDivider:cd|counter[4]  ; ClockDivider:cd|counter[1]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.301      ;
+; -3.263 ; ClockDivider:cd|counter[4]  ; ClockDivider:cd|counter[2]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.301      ;
+; -3.263 ; ClockDivider:cd|counter[4]  ; ClockDivider:cd|counter[3]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.301      ;
+; -3.263 ; ClockDivider:cd|counter[4]  ; ClockDivider:cd|counter[4]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.301      ;
+; -3.263 ; ClockDivider:cd|counter[4]  ; ClockDivider:cd|counter[5]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.301      ;
+; -3.263 ; ClockDivider:cd|counter[4]  ; ClockDivider:cd|counter[6]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.301      ;
+; -3.263 ; ClockDivider:cd|counter[4]  ; ClockDivider:cd|counter[7]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.301      ;
+; -3.263 ; ClockDivider:cd|counter[4]  ; ClockDivider:cd|counter[8]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.301      ;
+; -3.263 ; ClockDivider:cd|counter[4]  ; ClockDivider:cd|counter[9]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.301      ;
+; -3.263 ; ClockDivider:cd|counter[4]  ; ClockDivider:cd|counter[10] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.301      ;
+; -3.263 ; ClockDivider:cd|counter[4]  ; ClockDivider:cd|counter[11] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.301      ;
+; -3.263 ; ClockDivider:cd|counter[4]  ; ClockDivider:cd|counter[12] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.301      ;
+; -3.261 ; ClockDivider:cd|counter[9]  ; ClockDivider:cd|counter[0]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.299      ;
+; -3.261 ; ClockDivider:cd|counter[9]  ; ClockDivider:cd|counter[1]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.299      ;
+; -3.261 ; ClockDivider:cd|counter[9]  ; ClockDivider:cd|counter[2]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.299      ;
+; -3.261 ; ClockDivider:cd|counter[9]  ; ClockDivider:cd|counter[3]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.299      ;
+; -3.261 ; ClockDivider:cd|counter[9]  ; ClockDivider:cd|counter[4]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.299      ;
+; -3.261 ; ClockDivider:cd|counter[9]  ; ClockDivider:cd|counter[5]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.299      ;
+; -3.261 ; ClockDivider:cd|counter[9]  ; ClockDivider:cd|counter[6]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.299      ;
+; -3.261 ; ClockDivider:cd|counter[9]  ; ClockDivider:cd|counter[7]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.299      ;
+; -3.261 ; ClockDivider:cd|counter[9]  ; ClockDivider:cd|counter[8]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.299      ;
+; -3.261 ; ClockDivider:cd|counter[9]  ; ClockDivider:cd|counter[9]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.299      ;
+; -3.261 ; ClockDivider:cd|counter[9]  ; ClockDivider:cd|counter[10] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.299      ;
+; -3.261 ; ClockDivider:cd|counter[9]  ; ClockDivider:cd|counter[11] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.299      ;
+; -3.261 ; ClockDivider:cd|counter[9]  ; ClockDivider:cd|counter[12] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.299      ;
+; -3.229 ; ClockDivider:cd|counter[8]  ; ClockDivider:cd|counter[0]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.267      ;
+; -3.229 ; ClockDivider:cd|counter[8]  ; ClockDivider:cd|counter[1]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.267      ;
+; -3.229 ; ClockDivider:cd|counter[8]  ; ClockDivider:cd|counter[2]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.267      ;
+; -3.229 ; ClockDivider:cd|counter[8]  ; ClockDivider:cd|counter[3]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.267      ;
+; -3.229 ; ClockDivider:cd|counter[8]  ; ClockDivider:cd|counter[4]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.267      ;
+; -3.229 ; ClockDivider:cd|counter[8]  ; ClockDivider:cd|counter[5]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.267      ;
+; -3.229 ; ClockDivider:cd|counter[8]  ; ClockDivider:cd|counter[6]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.267      ;
+; -3.229 ; ClockDivider:cd|counter[8]  ; ClockDivider:cd|counter[7]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.267      ;
+; -3.229 ; ClockDivider:cd|counter[8]  ; ClockDivider:cd|counter[8]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.267      ;
++--------+-----------------------------+-----------------------------+--------------+-------------+--------------+------------+------------+
 
 
-----------------------------
-; Fast Model Setup Summary ;
-----------------------------
-No paths to report.
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Setup: 'TimerController:sm|state.Reset'                                                                                                             ;
++--------+-----------------------------------+--------------------------+--------------+--------------------------------+--------------+------------+------------+
+; Slack  ; From Node                         ; To Node                  ; Launch Clock ; Latch Clock                    ; Relationship ; Clock Skew ; Data Delay ;
++--------+-----------------------------------+--------------------------+--------------+--------------------------------+--------------+------------+------------+
+; -2.111 ; TimerController:sm|state.RunTimer ; TimerController:sm|decEn ; CLOCK_50     ; TimerController:sm|state.Reset ; 1.000        ; -0.501     ; 1.000      ;
++--------+-----------------------------------+--------------------------+--------------+--------------------------------+--------------+------------+------------+
 
 
----------------------------
-; Fast Model Hold Summary ;
----------------------------
-No paths to report.
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Hold: 'CLOCK_50'                                                                                                                                                ;
++--------+-------------------------------------+-------------------------------------+--------------------------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                           ; To Node                             ; Launch Clock                   ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+-------------------------------------+-------------------------------------+--------------------------------+-------------+--------------+------------+------------+
+; -2.686 ; TimerController:sm|state.Reset      ; TimerController:sm|state.Reset      ; TimerController:sm|state.Reset ; CLOCK_50    ; 0.000        ; 2.854      ; 0.731      ;
+; -2.198 ; TimerController:sm|state.Reset      ; TimerController:sm|state.SetSec     ; TimerController:sm|state.Reset ; CLOCK_50    ; 0.000        ; 2.854      ; 1.219      ;
+; -2.186 ; TimerController:sm|state.Reset      ; TimerController:sm|state.Reset      ; TimerController:sm|state.Reset ; CLOCK_50    ; -0.500       ; 2.854      ; 0.731      ;
+; -1.698 ; TimerController:sm|state.Reset      ; TimerController:sm|state.SetSec     ; TimerController:sm|state.Reset ; CLOCK_50    ; -0.500       ; 2.854      ; 1.219      ;
+; 0.101  ; TimerController:sm|decEn            ; DecrementTime:decMins|outputTime[4] ; TimerController:sm|state.Reset ; CLOCK_50    ; 0.000        ; 0.958      ; 1.345      ;
+; 0.445  ; TimerController:sm|state.SetSec     ; TimerController:sm|state.SetSec     ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.731      ;
+; 0.445  ; TimerController:sm|state.SetMin     ; TimerController:sm|state.SetMin     ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.731      ;
+; 0.445  ; ClockDivider:cd|clockReg            ; ClockDivider:cd|clockReg            ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.731      ;
+; 0.445  ; DecrementTime:decMins|outputTime[0] ; DecrementTime:decMins|outputTime[0] ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.731      ;
+; 0.445  ; DecrementTime:decMins|outputTime[1] ; DecrementTime:decMins|outputTime[1] ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.731      ;
+; 0.445  ; DecrementTime:decMins|outputTime[4] ; DecrementTime:decMins|outputTime[4] ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.731      ;
+; 0.445  ; TimerController:sm|state.RunTimer   ; TimerController:sm|state.RunTimer   ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.731      ;
+; 0.622  ; TimerController:sm|state.SetSec     ; TimerController:sm|state.SetMin     ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.908      ;
+; 0.674  ; DecrementTime:decMins|outputTime[0] ; DecrementTime:decMins|outputTime[1] ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.960      ;
+; 0.766  ; TimerController:sm|state.SetMin     ; TimerController:sm|state.SetTimer   ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.052      ;
+; 0.968  ; ClockDivider:cd|counter[13]         ; ClockDivider:cd|counter[13]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.254      ;
+; 0.975  ; ClockDivider:cd|counter[6]          ; ClockDivider:cd|counter[6]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.261      ;
+; 0.976  ; ClockDivider:cd|counter[4]          ; ClockDivider:cd|counter[4]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.262      ;
+; 0.976  ; ClockDivider:cd|counter[8]          ; ClockDivider:cd|counter[8]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.262      ;
+; 0.976  ; ClockDivider:cd|counter[11]         ; ClockDivider:cd|counter[11]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.262      ;
+; 0.976  ; ClockDivider:cd|counter[17]         ; ClockDivider:cd|counter[17]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.262      ;
+; 0.976  ; ClockDivider:cd|counter[20]         ; ClockDivider:cd|counter[20]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.262      ;
+; 0.976  ; ClockDivider:cd|counter[22]         ; ClockDivider:cd|counter[22]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.262      ;
+; 0.977  ; ClockDivider:cd|counter[1]          ; ClockDivider:cd|counter[1]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.263      ;
+; 0.978  ; TimerController:sm|decEn            ; DecrementTime:decMins|outputTime[0] ; TimerController:sm|state.Reset ; CLOCK_50    ; 0.000        ; 0.961      ; 2.225      ;
+; 0.978  ; TimerController:sm|decEn            ; DecrementTime:decMins|outputTime[1] ; TimerController:sm|state.Reset ; CLOCK_50    ; 0.000        ; 0.961      ; 2.225      ;
+; 0.978  ; TimerController:sm|decEn            ; DecrementTime:decMins|outputTime[2] ; TimerController:sm|state.Reset ; CLOCK_50    ; 0.000        ; 0.961      ; 2.225      ;
+; 0.978  ; TimerController:sm|decEn            ; DecrementTime:decMins|outputTime[3] ; TimerController:sm|state.Reset ; CLOCK_50    ; 0.000        ; 0.961      ; 2.225      ;
+; 0.979  ; ClockDivider:cd|counter[14]         ; ClockDivider:cd|counter[14]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.265      ;
+; 0.981  ; ClockDivider:cd|counter[10]         ; ClockDivider:cd|counter[10]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.267      ;
+; 0.981  ; ClockDivider:cd|counter[24]         ; ClockDivider:cd|counter[24]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.267      ;
+; 0.981  ; ClockDivider:cd|counter[12]         ; ClockDivider:cd|counter[12]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.267      ;
+; 1.019  ; ClockDivider:cd|counter[2]          ; ClockDivider:cd|counter[2]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.305      ;
+; 1.019  ; ClockDivider:cd|counter[3]          ; ClockDivider:cd|counter[3]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.305      ;
+; 1.019  ; ClockDivider:cd|counter[18]         ; ClockDivider:cd|counter[18]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.305      ;
+; 1.019  ; ClockDivider:cd|counter[19]         ; ClockDivider:cd|counter[19]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.305      ;
+; 1.021  ; ClockDivider:cd|counter[5]          ; ClockDivider:cd|counter[5]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.307      ;
+; 1.022  ; ClockDivider:cd|counter[7]          ; ClockDivider:cd|counter[7]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.308      ;
+; 1.022  ; ClockDivider:cd|counter[9]          ; ClockDivider:cd|counter[9]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.308      ;
+; 1.022  ; ClockDivider:cd|counter[21]         ; ClockDivider:cd|counter[21]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.308      ;
+; 1.023  ; ClockDivider:cd|counter[23]         ; ClockDivider:cd|counter[23]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.309      ;
+; 1.023  ; ClockDivider:cd|counter[25]         ; ClockDivider:cd|counter[25]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.309      ;
+; 1.024  ; ClockDivider:cd|counter[16]         ; ClockDivider:cd|counter[16]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.310      ;
+; 1.027  ; ClockDivider:cd|counter[0]          ; ClockDivider:cd|counter[0]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.313      ;
+; 1.134  ; DecrementTime:decMins|outputTime[0] ; DecrementTime:decMins|outputTime[2] ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.420      ;
+; 1.165  ; DecrementTime:decMins|outputTime[0] ; DecrementTime:decMins|outputTime[3] ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.451      ;
+; 1.193  ; ClockDivider:cd|counter[15]         ; ClockDivider:cd|counter[15]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.479      ;
+; 1.243  ; ClockDivider:cd|clockReg            ; DecrementTime:decMins|outputTime[4] ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.529      ;
+; 1.276  ; DecrementTime:decMins|outputTime[2] ; DecrementTime:decMins|outputTime[2] ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.562      ;
+; 1.312  ; DecrementTime:decMins|outputTime[2] ; DecrementTime:decMins|outputTime[3] ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.598      ;
+; 1.316  ; TimerController:sm|state.RunTimer   ; TimerController:sm|state.SetTimer   ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.457      ; 2.059      ;
+; 1.351  ; TimerController:sm|state.SetTimer   ; TimerController:sm|state.SetTimer   ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.637      ;
+; 1.400  ; ClockDivider:cd|counter[13]         ; ClockDivider:cd|counter[14]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.686      ;
+; 1.407  ; ClockDivider:cd|counter[6]          ; ClockDivider:cd|counter[7]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.693      ;
+; 1.408  ; ClockDivider:cd|counter[11]         ; ClockDivider:cd|counter[12]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.694      ;
+; 1.408  ; ClockDivider:cd|counter[17]         ; ClockDivider:cd|counter[18]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.694      ;
+; 1.408  ; ClockDivider:cd|counter[8]          ; ClockDivider:cd|counter[9]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.694      ;
+; 1.408  ; ClockDivider:cd|counter[22]         ; ClockDivider:cd|counter[23]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.694      ;
+; 1.409  ; ClockDivider:cd|counter[1]          ; ClockDivider:cd|counter[2]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.695      ;
+; 1.411  ; ClockDivider:cd|counter[14]         ; ClockDivider:cd|counter[15]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.697      ;
+; 1.413  ; ClockDivider:cd|counter[10]         ; ClockDivider:cd|counter[11]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.699      ;
+; 1.413  ; ClockDivider:cd|counter[24]         ; ClockDivider:cd|counter[25]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.699      ;
+; 1.452  ; ClockDivider:cd|counter[3]          ; ClockDivider:cd|counter[4]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.738      ;
+; 1.452  ; ClockDivider:cd|counter[19]         ; ClockDivider:cd|counter[20]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.738      ;
+; 1.452  ; ClockDivider:cd|counter[2]          ; ClockDivider:cd|counter[3]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.738      ;
+; 1.452  ; ClockDivider:cd|counter[18]         ; ClockDivider:cd|counter[19]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.738      ;
+; 1.454  ; ClockDivider:cd|counter[5]          ; ClockDivider:cd|counter[6]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.740      ;
+; 1.455  ; ClockDivider:cd|counter[7]          ; ClockDivider:cd|counter[8]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.741      ;
+; 1.455  ; ClockDivider:cd|counter[21]         ; ClockDivider:cd|counter[22]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.741      ;
+; 1.455  ; ClockDivider:cd|counter[9]          ; ClockDivider:cd|counter[10]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.741      ;
+; 1.456  ; ClockDivider:cd|counter[23]         ; ClockDivider:cd|counter[24]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.742      ;
+; 1.457  ; ClockDivider:cd|counter[16]         ; ClockDivider:cd|counter[17]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.743      ;
+; 1.457  ; ClockDivider:cd|counter[0]          ; ClockDivider:cd|counter[1]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.743      ;
+; 1.480  ; ClockDivider:cd|counter[13]         ; ClockDivider:cd|counter[15]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.766      ;
+; 1.487  ; ClockDivider:cd|counter[6]          ; ClockDivider:cd|counter[8]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.773      ;
+; 1.488  ; ClockDivider:cd|counter[17]         ; ClockDivider:cd|counter[19]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.774      ;
+; 1.488  ; ClockDivider:cd|counter[8]          ; ClockDivider:cd|counter[10]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.774      ;
+; 1.488  ; ClockDivider:cd|counter[22]         ; ClockDivider:cd|counter[24]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.774      ;
+; 1.489  ; ClockDivider:cd|counter[1]          ; ClockDivider:cd|counter[3]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.775      ;
+; 1.491  ; ClockDivider:cd|counter[14]         ; ClockDivider:cd|counter[16]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.777      ;
+; 1.493  ; ClockDivider:cd|counter[10]         ; ClockDivider:cd|counter[12]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.779      ;
+; 1.509  ; ClockDivider:cd|counter[4]          ; ClockDivider:cd|counter[5]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.795      ;
+; 1.509  ; ClockDivider:cd|counter[20]         ; ClockDivider:cd|counter[21]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.795      ;
+; 1.515  ; TimerController:sm|state.RunTimer   ; TimerController:sm|state.SetSec     ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.457      ; 2.258      ;
+; 1.516  ; ClockDivider:cd|counter[12]         ; ClockDivider:cd|counter[13]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; -0.003     ; 1.799      ;
+; 1.524  ; DecrementTime:decMins|outputTime[1] ; DecrementTime:decMins|outputTime[2] ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.810      ;
+; 1.532  ; ClockDivider:cd|counter[2]          ; ClockDivider:cd|counter[4]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.818      ;
+; 1.532  ; ClockDivider:cd|counter[18]         ; ClockDivider:cd|counter[20]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.818      ;
+; 1.534  ; ClockDivider:cd|counter[5]          ; ClockDivider:cd|counter[7]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.820      ;
+; 1.535  ; ClockDivider:cd|counter[7]          ; ClockDivider:cd|counter[9]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.821      ;
+; 1.535  ; ClockDivider:cd|counter[21]         ; ClockDivider:cd|counter[23]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.821      ;
+; 1.535  ; ClockDivider:cd|counter[9]          ; ClockDivider:cd|counter[11]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.821      ;
+; 1.536  ; ClockDivider:cd|counter[23]         ; ClockDivider:cd|counter[25]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.822      ;
+; 1.537  ; ClockDivider:cd|counter[16]         ; ClockDivider:cd|counter[18]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.823      ;
+; 1.537  ; ClockDivider:cd|counter[0]          ; ClockDivider:cd|counter[2]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.823      ;
+; 1.554  ; DecrementTime:decMins|outputTime[1] ; DecrementTime:decMins|outputTime[3] ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.840      ;
+; 1.560  ; ClockDivider:cd|counter[13]         ; ClockDivider:cd|counter[16]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.846      ;
+; 1.567  ; ClockDivider:cd|counter[6]          ; ClockDivider:cd|counter[9]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.853      ;
+; 1.568  ; ClockDivider:cd|counter[17]         ; ClockDivider:cd|counter[20]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.854      ;
+; 1.568  ; ClockDivider:cd|counter[8]          ; ClockDivider:cd|counter[11]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 1.854      ;
++--------+-------------------------------------+-------------------------------------+--------------------------------+-------------+--------------+------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Hold: 'TimerController:sm|state.Reset'                                                                                                             ;
++-------+-----------------------------------+--------------------------+--------------+--------------------------------+--------------+------------+------------+
+; Slack ; From Node                         ; To Node                  ; Launch Clock ; Latch Clock                    ; Relationship ; Clock Skew ; Data Delay ;
++-------+-----------------------------------+--------------------------+--------------+--------------------------------+--------------+------------+------------+
+; 1.501 ; TimerController:sm|state.RunTimer ; TimerController:sm|decEn ; CLOCK_50     ; TimerController:sm|state.Reset ; 0.000        ; -0.501     ; 1.000      ;
++-------+-----------------------------------+--------------------------+--------------+--------------------------------+--------------+------------+------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Minimum Pulse Width: 'CLOCK_50'                                                                              ;
++--------+--------------+----------------+------------------+----------+------------+-------------------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock    ; Clock Edge ; Target                              ;
++--------+--------------+----------------+------------------+----------+------------+-------------------------------------+
+; -1.631 ; 1.000        ; 2.631          ; Port Rate        ; CLOCK_50 ; Rise       ; CLOCK_50                            ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|clockReg            ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|clockReg            ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[0]          ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[0]          ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[10]         ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[10]         ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[11]         ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[11]         ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[12]         ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[12]         ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[13]         ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[13]         ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[14]         ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[14]         ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[15]         ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[15]         ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[16]         ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[16]         ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[17]         ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[17]         ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[18]         ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[18]         ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[19]         ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[19]         ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[1]          ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[1]          ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[20]         ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[20]         ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[21]         ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[21]         ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[22]         ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[22]         ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[23]         ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[23]         ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[24]         ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[24]         ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[25]         ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[25]         ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[2]          ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[2]          ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[3]          ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[3]          ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[4]          ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[4]          ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[5]          ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[5]          ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[6]          ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[6]          ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[7]          ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[7]          ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[8]          ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[8]          ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[9]          ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[9]          ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; DecrementTime:decMins|outputTime[0] ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DecrementTime:decMins|outputTime[0] ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; DecrementTime:decMins|outputTime[1] ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DecrementTime:decMins|outputTime[1] ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; DecrementTime:decMins|outputTime[2] ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DecrementTime:decMins|outputTime[2] ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; DecrementTime:decMins|outputTime[3] ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DecrementTime:decMins|outputTime[3] ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; DecrementTime:decMins|outputTime[4] ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DecrementTime:decMins|outputTime[4] ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; TimerController:sm|state.Reset      ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; TimerController:sm|state.Reset      ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; TimerController:sm|state.RunTimer   ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; TimerController:sm|state.RunTimer   ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; TimerController:sm|state.SetMin     ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; TimerController:sm|state.SetMin     ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; TimerController:sm|state.SetSec     ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; TimerController:sm|state.SetSec     ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; TimerController:sm|state.SetTimer   ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; TimerController:sm|state.SetTimer   ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; CLOCK_50|combout                    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; CLOCK_50|combout                    ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; CLOCK_50~clkctrl|inclk[0]           ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; CLOCK_50~clkctrl|inclk[0]           ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; CLOCK_50~clkctrl|outclk             ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; CLOCK_50~clkctrl|outclk             ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; cd|clockReg|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; cd|clockReg|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; cd|counter[0]|clk                   ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; cd|counter[0]|clk                   ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; cd|counter[10]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; cd|counter[10]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; cd|counter[11]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; cd|counter[11]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; cd|counter[12]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; cd|counter[12]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; cd|counter[13]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; cd|counter[13]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; cd|counter[14]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; cd|counter[14]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; cd|counter[15]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; cd|counter[15]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; cd|counter[16]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; cd|counter[16]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; cd|counter[17]|clk                  ;
++--------+--------------+----------------+------------------+----------+------------+-------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Minimum Pulse Width: 'TimerController:sm|state.Reset'                                                                  ;
++-------+--------------+----------------+------------------+--------------------------------+------------+--------------------------+
+; Slack ; Actual Width ; Required Width ; Type             ; Clock                          ; Clock Edge ; Target                   ;
++-------+--------------+----------------+------------------+--------------------------------+------------+--------------------------+
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; TimerController:sm|state.Reset ; Rise       ; TimerController:sm|decEn ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; TimerController:sm|state.Reset ; Rise       ; TimerController:sm|decEn ;
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; TimerController:sm|state.Reset ; Fall       ; sm|WideOr2~0|combout     ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; TimerController:sm|state.Reset ; Fall       ; sm|WideOr2~0|combout     ;
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; TimerController:sm|state.Reset ; Rise       ; sm|WideOr2~0|datad       ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; TimerController:sm|state.Reset ; Rise       ; sm|WideOr2~0|datad       ;
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; TimerController:sm|state.Reset ; Fall       ; sm|decEn|datab           ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; TimerController:sm|state.Reset ; Fall       ; sm|decEn|datab           ;
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; TimerController:sm|state.Reset ; Rise       ; sm|state.Reset|regout    ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; TimerController:sm|state.Reset ; Rise       ; sm|state.Reset|regout    ;
++-------+--------------+----------------+------------------+--------------------------------+------------+--------------------------+
+
+
++-----------------------------------------------------------------------+
+; Setup Times                                                           ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; KEY[*]    ; CLOCK_50   ; 5.351 ; 5.351 ; Rise       ; CLOCK_50        ;
+;  KEY[0]   ; CLOCK_50   ; 5.351 ; 5.351 ; Rise       ; CLOCK_50        ;
+;  KEY[1]   ; CLOCK_50   ; 3.471 ; 3.471 ; Rise       ; CLOCK_50        ;
+;  KEY[2]   ; CLOCK_50   ; 4.607 ; 4.607 ; Rise       ; CLOCK_50        ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Hold Times                                                              ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; KEY[*]    ; CLOCK_50   ; -3.192 ; -3.192 ; Rise       ; CLOCK_50        ;
+;  KEY[0]   ; CLOCK_50   ; -3.381 ; -3.381 ; Rise       ; CLOCK_50        ;
+;  KEY[1]   ; CLOCK_50   ; -3.192 ; -3.192 ; Rise       ; CLOCK_50        ;
+;  KEY[2]   ; CLOCK_50   ; -3.970 ; -3.970 ; Rise       ; CLOCK_50        ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Clock to Output Times                                                 ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; HEX2[*]   ; CLOCK_50   ; 8.250 ; 8.250 ; Rise       ; CLOCK_50        ;
+;  HEX2[0]  ; CLOCK_50   ; 7.917 ; 7.917 ; Rise       ; CLOCK_50        ;
+;  HEX2[1]  ; CLOCK_50   ; 8.250 ; 8.250 ; Rise       ; CLOCK_50        ;
+;  HEX2[2]  ; CLOCK_50   ; 7.956 ; 7.956 ; Rise       ; CLOCK_50        ;
+;  HEX2[3]  ; CLOCK_50   ; 7.653 ; 7.653 ; Rise       ; CLOCK_50        ;
+;  HEX2[4]  ; CLOCK_50   ; 7.617 ; 7.617 ; Rise       ; CLOCK_50        ;
+;  HEX2[5]  ; CLOCK_50   ; 7.586 ; 7.586 ; Rise       ; CLOCK_50        ;
+;  HEX2[6]  ; CLOCK_50   ; 8.138 ; 8.138 ; Rise       ; CLOCK_50        ;
+; HEX3[*]   ; CLOCK_50   ; 6.907 ; 6.907 ; Rise       ; CLOCK_50        ;
+;  HEX3[1]  ; CLOCK_50   ; 6.907 ; 6.907 ; Rise       ; CLOCK_50        ;
+;  HEX3[4]  ; CLOCK_50   ; 6.907 ; 6.907 ; Rise       ; CLOCK_50        ;
+;  HEX3[6]  ; CLOCK_50   ; 6.907 ; 6.907 ; Rise       ; CLOCK_50        ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Minimum Clock to Output Times                                         ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; HEX2[*]   ; CLOCK_50   ; 7.049 ; 7.049 ; Rise       ; CLOCK_50        ;
+;  HEX2[0]  ; CLOCK_50   ; 7.617 ; 7.617 ; Rise       ; CLOCK_50        ;
+;  HEX2[1]  ; CLOCK_50   ; 7.956 ; 7.956 ; Rise       ; CLOCK_50        ;
+;  HEX2[2]  ; CLOCK_50   ; 7.623 ; 7.623 ; Rise       ; CLOCK_50        ;
+;  HEX2[3]  ; CLOCK_50   ; 7.088 ; 7.088 ; Rise       ; CLOCK_50        ;
+;  HEX2[4]  ; CLOCK_50   ; 7.049 ; 7.049 ; Rise       ; CLOCK_50        ;
+;  HEX2[5]  ; CLOCK_50   ; 7.083 ; 7.083 ; Rise       ; CLOCK_50        ;
+;  HEX2[6]  ; CLOCK_50   ; 7.829 ; 7.829 ; Rise       ; CLOCK_50        ;
+; HEX3[*]   ; CLOCK_50   ; 6.907 ; 6.907 ; Rise       ; CLOCK_50        ;
+;  HEX3[1]  ; CLOCK_50   ; 6.907 ; 6.907 ; Rise       ; CLOCK_50        ;
+;  HEX3[4]  ; CLOCK_50   ; 6.907 ; 6.907 ; Rise       ; CLOCK_50        ;
+;  HEX3[6]  ; CLOCK_50   ; 6.907 ; 6.907 ; Rise       ; CLOCK_50        ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++---------------------------------------------------------+
+; Fast Model Setup Summary                                ;
++--------------------------------+--------+---------------+
+; Clock                          ; Slack  ; End Point TNS ;
++--------------------------------+--------+---------------+
+; CLOCK_50                       ; -0.729 ; -18.754       ;
+; TimerController:sm|state.Reset ; -0.425 ; -0.425        ;
++--------------------------------+--------+---------------+
+
+
++---------------------------------------------------------+
+; Fast Model Hold Summary                                 ;
++--------------------------------+--------+---------------+
+; Clock                          ; Slack  ; End Point TNS ;
++--------------------------------+--------+---------------+
+; CLOCK_50                       ; -1.715 ; -5.253        ;
+; TimerController:sm|state.Reset ; 0.873  ; 0.000         ;
++--------------------------------+--------+---------------+
 
 
 -------------------------------
@@ -147,32 +616,540 @@ No paths to report.
 No paths to report.
 
 
-------------------------------------------
-; Fast Model Minimum Pulse Width Summary ;
-------------------------------------------
-No paths to report.
++---------------------------------------------------------+
+; Fast Model Minimum Pulse Width Summary                  ;
++--------------------------------+--------+---------------+
+; Clock                          ; Slack  ; End Point TNS ;
++--------------------------------+--------+---------------+
+; CLOCK_50                       ; -1.380 ; -38.380       ;
+; TimerController:sm|state.Reset ; 0.500  ; 0.000         ;
++--------------------------------+--------+---------------+
 
 
--------------------------------
-; Fast Model Datasheet Report ;
--------------------------------
-Nothing to report.
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Setup: 'CLOCK_50'                                                                                                             ;
++--------+-----------------------------+-----------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                   ; To Node                     ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+-----------------------------+-----------------------------+--------------+-------------+--------------+------------+------------+
+; -0.729 ; ClockDivider:cd|counter[5]  ; ClockDivider:cd|counter[0]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.761      ;
+; -0.729 ; ClockDivider:cd|counter[5]  ; ClockDivider:cd|counter[1]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.761      ;
+; -0.729 ; ClockDivider:cd|counter[5]  ; ClockDivider:cd|counter[2]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.761      ;
+; -0.729 ; ClockDivider:cd|counter[5]  ; ClockDivider:cd|counter[3]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.761      ;
+; -0.729 ; ClockDivider:cd|counter[5]  ; ClockDivider:cd|counter[4]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.761      ;
+; -0.729 ; ClockDivider:cd|counter[5]  ; ClockDivider:cd|counter[5]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.761      ;
+; -0.729 ; ClockDivider:cd|counter[5]  ; ClockDivider:cd|counter[6]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.761      ;
+; -0.729 ; ClockDivider:cd|counter[5]  ; ClockDivider:cd|counter[7]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.761      ;
+; -0.729 ; ClockDivider:cd|counter[5]  ; ClockDivider:cd|counter[8]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.761      ;
+; -0.729 ; ClockDivider:cd|counter[5]  ; ClockDivider:cd|counter[9]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.761      ;
+; -0.729 ; ClockDivider:cd|counter[5]  ; ClockDivider:cd|counter[10] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.761      ;
+; -0.729 ; ClockDivider:cd|counter[5]  ; ClockDivider:cd|counter[11] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.761      ;
+; -0.729 ; ClockDivider:cd|counter[5]  ; ClockDivider:cd|counter[12] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.761      ;
+; -0.721 ; ClockDivider:cd|counter[2]  ; ClockDivider:cd|counter[0]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.753      ;
+; -0.721 ; ClockDivider:cd|counter[2]  ; ClockDivider:cd|counter[1]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.753      ;
+; -0.721 ; ClockDivider:cd|counter[2]  ; ClockDivider:cd|counter[2]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.753      ;
+; -0.721 ; ClockDivider:cd|counter[2]  ; ClockDivider:cd|counter[3]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.753      ;
+; -0.721 ; ClockDivider:cd|counter[2]  ; ClockDivider:cd|counter[4]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.753      ;
+; -0.721 ; ClockDivider:cd|counter[2]  ; ClockDivider:cd|counter[5]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.753      ;
+; -0.721 ; ClockDivider:cd|counter[2]  ; ClockDivider:cd|counter[6]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.753      ;
+; -0.721 ; ClockDivider:cd|counter[2]  ; ClockDivider:cd|counter[7]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.753      ;
+; -0.721 ; ClockDivider:cd|counter[2]  ; ClockDivider:cd|counter[8]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.753      ;
+; -0.721 ; ClockDivider:cd|counter[2]  ; ClockDivider:cd|counter[9]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.753      ;
+; -0.721 ; ClockDivider:cd|counter[2]  ; ClockDivider:cd|counter[10] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.753      ;
+; -0.721 ; ClockDivider:cd|counter[2]  ; ClockDivider:cd|counter[11] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.753      ;
+; -0.721 ; ClockDivider:cd|counter[2]  ; ClockDivider:cd|counter[12] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.753      ;
+; -0.709 ; ClockDivider:cd|counter[0]  ; ClockDivider:cd|counter[0]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.741      ;
+; -0.709 ; ClockDivider:cd|counter[0]  ; ClockDivider:cd|counter[1]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.741      ;
+; -0.709 ; ClockDivider:cd|counter[0]  ; ClockDivider:cd|counter[2]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.741      ;
+; -0.709 ; ClockDivider:cd|counter[0]  ; ClockDivider:cd|counter[3]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.741      ;
+; -0.709 ; ClockDivider:cd|counter[0]  ; ClockDivider:cd|counter[4]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.741      ;
+; -0.709 ; ClockDivider:cd|counter[0]  ; ClockDivider:cd|counter[5]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.741      ;
+; -0.709 ; ClockDivider:cd|counter[0]  ; ClockDivider:cd|counter[6]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.741      ;
+; -0.709 ; ClockDivider:cd|counter[0]  ; ClockDivider:cd|counter[7]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.741      ;
+; -0.709 ; ClockDivider:cd|counter[0]  ; ClockDivider:cd|counter[8]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.741      ;
+; -0.709 ; ClockDivider:cd|counter[0]  ; ClockDivider:cd|counter[9]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.741      ;
+; -0.709 ; ClockDivider:cd|counter[0]  ; ClockDivider:cd|counter[10] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.741      ;
+; -0.709 ; ClockDivider:cd|counter[0]  ; ClockDivider:cd|counter[11] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.741      ;
+; -0.709 ; ClockDivider:cd|counter[0]  ; ClockDivider:cd|counter[12] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.741      ;
+; -0.707 ; ClockDivider:cd|counter[4]  ; ClockDivider:cd|counter[0]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.739      ;
+; -0.707 ; ClockDivider:cd|counter[4]  ; ClockDivider:cd|counter[1]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.739      ;
+; -0.707 ; ClockDivider:cd|counter[4]  ; ClockDivider:cd|counter[2]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.739      ;
+; -0.707 ; ClockDivider:cd|counter[4]  ; ClockDivider:cd|counter[3]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.739      ;
+; -0.707 ; ClockDivider:cd|counter[4]  ; ClockDivider:cd|counter[4]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.739      ;
+; -0.707 ; ClockDivider:cd|counter[4]  ; ClockDivider:cd|counter[5]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.739      ;
+; -0.707 ; ClockDivider:cd|counter[4]  ; ClockDivider:cd|counter[6]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.739      ;
+; -0.707 ; ClockDivider:cd|counter[4]  ; ClockDivider:cd|counter[7]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.739      ;
+; -0.707 ; ClockDivider:cd|counter[4]  ; ClockDivider:cd|counter[8]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.739      ;
+; -0.707 ; ClockDivider:cd|counter[4]  ; ClockDivider:cd|counter[9]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.739      ;
+; -0.707 ; ClockDivider:cd|counter[4]  ; ClockDivider:cd|counter[10] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.739      ;
+; -0.707 ; ClockDivider:cd|counter[4]  ; ClockDivider:cd|counter[11] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.739      ;
+; -0.707 ; ClockDivider:cd|counter[4]  ; ClockDivider:cd|counter[12] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.739      ;
+; -0.705 ; ClockDivider:cd|counter[1]  ; ClockDivider:cd|counter[0]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.737      ;
+; -0.705 ; ClockDivider:cd|counter[1]  ; ClockDivider:cd|counter[1]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.737      ;
+; -0.705 ; ClockDivider:cd|counter[1]  ; ClockDivider:cd|counter[2]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.737      ;
+; -0.705 ; ClockDivider:cd|counter[1]  ; ClockDivider:cd|counter[3]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.737      ;
+; -0.705 ; ClockDivider:cd|counter[1]  ; ClockDivider:cd|counter[4]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.737      ;
+; -0.705 ; ClockDivider:cd|counter[1]  ; ClockDivider:cd|counter[5]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.737      ;
+; -0.705 ; ClockDivider:cd|counter[1]  ; ClockDivider:cd|counter[6]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.737      ;
+; -0.705 ; ClockDivider:cd|counter[1]  ; ClockDivider:cd|counter[7]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.737      ;
+; -0.705 ; ClockDivider:cd|counter[1]  ; ClockDivider:cd|counter[8]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.737      ;
+; -0.705 ; ClockDivider:cd|counter[1]  ; ClockDivider:cd|counter[9]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.737      ;
+; -0.705 ; ClockDivider:cd|counter[1]  ; ClockDivider:cd|counter[10] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.737      ;
+; -0.705 ; ClockDivider:cd|counter[1]  ; ClockDivider:cd|counter[11] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.737      ;
+; -0.705 ; ClockDivider:cd|counter[1]  ; ClockDivider:cd|counter[12] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.737      ;
+; -0.697 ; ClockDivider:cd|counter[9]  ; ClockDivider:cd|counter[0]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.729      ;
+; -0.697 ; ClockDivider:cd|counter[9]  ; ClockDivider:cd|counter[1]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.729      ;
+; -0.697 ; ClockDivider:cd|counter[9]  ; ClockDivider:cd|counter[2]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.729      ;
+; -0.697 ; ClockDivider:cd|counter[9]  ; ClockDivider:cd|counter[3]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.729      ;
+; -0.697 ; ClockDivider:cd|counter[9]  ; ClockDivider:cd|counter[4]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.729      ;
+; -0.697 ; ClockDivider:cd|counter[9]  ; ClockDivider:cd|counter[5]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.729      ;
+; -0.697 ; ClockDivider:cd|counter[9]  ; ClockDivider:cd|counter[6]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.729      ;
+; -0.697 ; ClockDivider:cd|counter[9]  ; ClockDivider:cd|counter[7]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.729      ;
+; -0.697 ; ClockDivider:cd|counter[9]  ; ClockDivider:cd|counter[8]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.729      ;
+; -0.697 ; ClockDivider:cd|counter[9]  ; ClockDivider:cd|counter[9]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.729      ;
+; -0.697 ; ClockDivider:cd|counter[9]  ; ClockDivider:cd|counter[10] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.729      ;
+; -0.697 ; ClockDivider:cd|counter[9]  ; ClockDivider:cd|counter[11] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.729      ;
+; -0.697 ; ClockDivider:cd|counter[9]  ; ClockDivider:cd|counter[12] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.729      ;
+; -0.680 ; ClockDivider:cd|counter[10] ; ClockDivider:cd|counter[0]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.712      ;
+; -0.680 ; ClockDivider:cd|counter[10] ; ClockDivider:cd|counter[1]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.712      ;
+; -0.680 ; ClockDivider:cd|counter[10] ; ClockDivider:cd|counter[2]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.712      ;
+; -0.680 ; ClockDivider:cd|counter[10] ; ClockDivider:cd|counter[3]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.712      ;
+; -0.680 ; ClockDivider:cd|counter[10] ; ClockDivider:cd|counter[4]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.712      ;
+; -0.680 ; ClockDivider:cd|counter[10] ; ClockDivider:cd|counter[5]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.712      ;
+; -0.680 ; ClockDivider:cd|counter[10] ; ClockDivider:cd|counter[6]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.712      ;
+; -0.680 ; ClockDivider:cd|counter[10] ; ClockDivider:cd|counter[7]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.712      ;
+; -0.680 ; ClockDivider:cd|counter[10] ; ClockDivider:cd|counter[8]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.712      ;
+; -0.680 ; ClockDivider:cd|counter[10] ; ClockDivider:cd|counter[9]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.712      ;
+; -0.680 ; ClockDivider:cd|counter[10] ; ClockDivider:cd|counter[10] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.712      ;
+; -0.680 ; ClockDivider:cd|counter[10] ; ClockDivider:cd|counter[11] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.712      ;
+; -0.680 ; ClockDivider:cd|counter[10] ; ClockDivider:cd|counter[12] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.712      ;
+; -0.678 ; ClockDivider:cd|counter[8]  ; ClockDivider:cd|counter[0]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.710      ;
+; -0.678 ; ClockDivider:cd|counter[8]  ; ClockDivider:cd|counter[1]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.710      ;
+; -0.678 ; ClockDivider:cd|counter[8]  ; ClockDivider:cd|counter[2]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.710      ;
+; -0.678 ; ClockDivider:cd|counter[8]  ; ClockDivider:cd|counter[3]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.710      ;
+; -0.678 ; ClockDivider:cd|counter[8]  ; ClockDivider:cd|counter[4]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.710      ;
+; -0.678 ; ClockDivider:cd|counter[8]  ; ClockDivider:cd|counter[5]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.710      ;
+; -0.678 ; ClockDivider:cd|counter[8]  ; ClockDivider:cd|counter[6]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.710      ;
+; -0.678 ; ClockDivider:cd|counter[8]  ; ClockDivider:cd|counter[7]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.710      ;
+; -0.678 ; ClockDivider:cd|counter[8]  ; ClockDivider:cd|counter[8]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.710      ;
++--------+-----------------------------+-----------------------------+--------------+-------------+--------------+------------+------------+
 
 
-+----------------------------------------------------------------------------+
-; Multicorner Timing Analysis Summary                                        ;
-+------------------+-------+------+----------+---------+---------------------+
-; Clock            ; Setup ; Hold ; Recovery ; Removal ; Minimum Pulse Width ;
-+------------------+-------+------+----------+---------+---------------------+
-; Worst-case Slack ; N/A   ; N/A  ; N/A      ; N/A     ; N/A                 ;
-; Design-wide TNS  ; 0.0   ; 0.0  ; 0.0      ; 0.0     ; 0.0                 ;
-+------------------+-------+------+----------+---------+---------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Setup: 'TimerController:sm|state.Reset'                                                                                                             ;
++--------+-----------------------------------+--------------------------+--------------+--------------------------------+--------------+------------+------------+
+; Slack  ; From Node                         ; To Node                  ; Launch Clock ; Latch Clock                    ; Relationship ; Clock Skew ; Data Delay ;
++--------+-----------------------------------+--------------------------+--------------+--------------------------------+--------------+------------+------------+
+; -0.425 ; TimerController:sm|state.RunTimer ; TimerController:sm|decEn ; CLOCK_50     ; TimerController:sm|state.Reset ; 1.000        ; -0.453     ; 0.420      ;
++--------+-----------------------------------+--------------------------+--------------+--------------------------------+--------------+------------+------------+
 
 
--------------------
-; Clock Transfers ;
--------------------
-Nothing to report.
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Hold: 'CLOCK_50'                                                                                                                                                ;
++--------+-------------------------------------+-------------------------------------+--------------------------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                           ; To Node                             ; Launch Clock                   ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+-------------------------------------+-------------------------------------+--------------------------------+-------------+--------------+------------+------------+
+; -1.715 ; TimerController:sm|state.Reset      ; TimerController:sm|state.Reset      ; TimerController:sm|state.Reset ; CLOCK_50    ; 0.000        ; 1.789      ; 0.367      ;
+; -1.573 ; TimerController:sm|state.Reset      ; TimerController:sm|state.SetSec     ; TimerController:sm|state.Reset ; CLOCK_50    ; 0.000        ; 1.789      ; 0.509      ;
+; -1.215 ; TimerController:sm|state.Reset      ; TimerController:sm|state.Reset      ; TimerController:sm|state.Reset ; CLOCK_50    ; -0.500       ; 1.789      ; 0.367      ;
+; -1.073 ; TimerController:sm|state.Reset      ; TimerController:sm|state.SetSec     ; TimerController:sm|state.Reset ; CLOCK_50    ; -0.500       ; 1.789      ; 0.509      ;
+; -0.713 ; TimerController:sm|decEn            ; DecrementTime:decMins|outputTime[4] ; TimerController:sm|state.Reset ; CLOCK_50    ; 0.000        ; 1.060      ; 0.499      ;
+; -0.313 ; TimerController:sm|decEn            ; DecrementTime:decMins|outputTime[0] ; TimerController:sm|state.Reset ; CLOCK_50    ; 0.000        ; 1.063      ; 0.902      ;
+; -0.313 ; TimerController:sm|decEn            ; DecrementTime:decMins|outputTime[1] ; TimerController:sm|state.Reset ; CLOCK_50    ; 0.000        ; 1.063      ; 0.902      ;
+; -0.313 ; TimerController:sm|decEn            ; DecrementTime:decMins|outputTime[2] ; TimerController:sm|state.Reset ; CLOCK_50    ; 0.000        ; 1.063      ; 0.902      ;
+; -0.313 ; TimerController:sm|decEn            ; DecrementTime:decMins|outputTime[3] ; TimerController:sm|state.Reset ; CLOCK_50    ; 0.000        ; 1.063      ; 0.902      ;
+; 0.059  ; TimerController:sm|state.RunTimer   ; TimerController:sm|state.SetTimer   ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.607      ; 0.818      ;
+; 0.127  ; TimerController:sm|state.RunTimer   ; TimerController:sm|state.SetSec     ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.607      ; 0.886      ;
+; 0.215  ; TimerController:sm|state.SetMin     ; TimerController:sm|state.SetMin     ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215  ; ClockDivider:cd|clockReg            ; ClockDivider:cd|clockReg            ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215  ; DecrementTime:decMins|outputTime[0] ; DecrementTime:decMins|outputTime[0] ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215  ; DecrementTime:decMins|outputTime[1] ; DecrementTime:decMins|outputTime[1] ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215  ; DecrementTime:decMins|outputTime[4] ; DecrementTime:decMins|outputTime[4] ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215  ; TimerController:sm|state.RunTimer   ; TimerController:sm|state.RunTimer   ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215  ; TimerController:sm|state.SetSec     ; TimerController:sm|state.SetSec     ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
+; 0.242  ; TimerController:sm|state.SetSec     ; TimerController:sm|state.SetMin     ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.394      ;
+; 0.268  ; DecrementTime:decMins|outputTime[0] ; DecrementTime:decMins|outputTime[1] ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.420      ;
+; 0.288  ; TimerController:sm|state.SetMin     ; TimerController:sm|state.SetTimer   ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.440      ;
+; 0.355  ; ClockDivider:cd|counter[13]         ; ClockDivider:cd|counter[13]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.507      ;
+; 0.361  ; ClockDivider:cd|counter[14]         ; ClockDivider:cd|counter[14]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.513      ;
+; 0.362  ; ClockDivider:cd|counter[6]          ; ClockDivider:cd|counter[6]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.514      ;
+; 0.362  ; ClockDivider:cd|counter[8]          ; ClockDivider:cd|counter[8]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.514      ;
+; 0.362  ; ClockDivider:cd|counter[17]         ; ClockDivider:cd|counter[17]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.514      ;
+; 0.362  ; ClockDivider:cd|counter[22]         ; ClockDivider:cd|counter[22]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.514      ;
+; 0.363  ; ClockDivider:cd|counter[1]          ; ClockDivider:cd|counter[1]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.515      ;
+; 0.363  ; ClockDivider:cd|counter[4]          ; ClockDivider:cd|counter[4]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.515      ;
+; 0.363  ; ClockDivider:cd|counter[10]         ; ClockDivider:cd|counter[10]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.515      ;
+; 0.363  ; ClockDivider:cd|counter[11]         ; ClockDivider:cd|counter[11]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.515      ;
+; 0.363  ; ClockDivider:cd|counter[20]         ; ClockDivider:cd|counter[20]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.515      ;
+; 0.363  ; ClockDivider:cd|counter[24]         ; ClockDivider:cd|counter[24]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.515      ;
+; 0.363  ; ClockDivider:cd|counter[12]         ; ClockDivider:cd|counter[12]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.515      ;
+; 0.376  ; ClockDivider:cd|counter[0]          ; ClockDivider:cd|counter[0]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.528      ;
+; 0.376  ; ClockDivider:cd|counter[2]          ; ClockDivider:cd|counter[2]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.528      ;
+; 0.376  ; ClockDivider:cd|counter[3]          ; ClockDivider:cd|counter[3]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.528      ;
+; 0.376  ; ClockDivider:cd|counter[5]          ; ClockDivider:cd|counter[5]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.528      ;
+; 0.376  ; ClockDivider:cd|counter[16]         ; ClockDivider:cd|counter[16]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.528      ;
+; 0.376  ; ClockDivider:cd|counter[18]         ; ClockDivider:cd|counter[18]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.528      ;
+; 0.376  ; ClockDivider:cd|counter[19]         ; ClockDivider:cd|counter[19]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.528      ;
+; 0.377  ; ClockDivider:cd|counter[7]          ; ClockDivider:cd|counter[7]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.529      ;
+; 0.377  ; ClockDivider:cd|counter[9]          ; ClockDivider:cd|counter[9]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.529      ;
+; 0.378  ; ClockDivider:cd|counter[21]         ; ClockDivider:cd|counter[21]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.530      ;
+; 0.378  ; ClockDivider:cd|counter[23]         ; ClockDivider:cd|counter[23]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.530      ;
+; 0.379  ; ClockDivider:cd|counter[25]         ; ClockDivider:cd|counter[25]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.531      ;
+; 0.427  ; DecrementTime:decMins|outputTime[0] ; DecrementTime:decMins|outputTime[2] ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.579      ;
+; 0.437  ; ClockDivider:cd|counter[15]         ; ClockDivider:cd|counter[15]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.589      ;
+; 0.443  ; DecrementTime:decMins|outputTime[0] ; DecrementTime:decMins|outputTime[3] ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.595      ;
+; 0.452  ; ClockDivider:cd|clockReg            ; DecrementTime:decMins|outputTime[4] ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.604      ;
+; 0.473  ; DecrementTime:decMins|outputTime[2] ; DecrementTime:decMins|outputTime[2] ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.625      ;
+; 0.493  ; ClockDivider:cd|counter[13]         ; ClockDivider:cd|counter[14]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.645      ;
+; 0.495  ; DecrementTime:decMins|outputTime[2] ; DecrementTime:decMins|outputTime[3] ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.647      ;
+; 0.499  ; ClockDivider:cd|counter[14]         ; ClockDivider:cd|counter[15]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.651      ;
+; 0.500  ; ClockDivider:cd|counter[17]         ; ClockDivider:cd|counter[18]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.652      ;
+; 0.500  ; ClockDivider:cd|counter[6]          ; ClockDivider:cd|counter[7]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.652      ;
+; 0.500  ; ClockDivider:cd|counter[8]          ; ClockDivider:cd|counter[9]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.652      ;
+; 0.500  ; ClockDivider:cd|counter[22]         ; ClockDivider:cd|counter[23]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.652      ;
+; 0.501  ; TimerController:sm|state.SetTimer   ; TimerController:sm|state.SetTimer   ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.653      ;
+; 0.501  ; ClockDivider:cd|counter[10]         ; ClockDivider:cd|counter[11]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.653      ;
+; 0.501  ; ClockDivider:cd|counter[11]         ; ClockDivider:cd|counter[12]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.653      ;
+; 0.501  ; ClockDivider:cd|counter[1]          ; ClockDivider:cd|counter[2]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.653      ;
+; 0.501  ; ClockDivider:cd|counter[24]         ; ClockDivider:cd|counter[25]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.653      ;
+; 0.516  ; ClockDivider:cd|counter[5]          ; ClockDivider:cd|counter[6]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.668      ;
+; 0.516  ; ClockDivider:cd|counter[16]         ; ClockDivider:cd|counter[17]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.668      ;
+; 0.516  ; ClockDivider:cd|counter[0]          ; ClockDivider:cd|counter[1]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.668      ;
+; 0.516  ; ClockDivider:cd|counter[3]          ; ClockDivider:cd|counter[4]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.668      ;
+; 0.516  ; ClockDivider:cd|counter[19]         ; ClockDivider:cd|counter[20]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.668      ;
+; 0.516  ; ClockDivider:cd|counter[2]          ; ClockDivider:cd|counter[3]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.668      ;
+; 0.516  ; ClockDivider:cd|counter[18]         ; ClockDivider:cd|counter[19]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.668      ;
+; 0.517  ; ClockDivider:cd|counter[7]          ; ClockDivider:cd|counter[8]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.669      ;
+; 0.517  ; ClockDivider:cd|counter[9]          ; ClockDivider:cd|counter[10]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.669      ;
+; 0.518  ; ClockDivider:cd|counter[21]         ; ClockDivider:cd|counter[22]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.670      ;
+; 0.518  ; ClockDivider:cd|counter[23]         ; ClockDivider:cd|counter[24]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.670      ;
+; 0.528  ; ClockDivider:cd|counter[13]         ; ClockDivider:cd|counter[15]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.680      ;
+; 0.534  ; ClockDivider:cd|counter[14]         ; ClockDivider:cd|counter[16]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.686      ;
+; 0.535  ; ClockDivider:cd|counter[17]         ; ClockDivider:cd|counter[19]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.687      ;
+; 0.535  ; ClockDivider:cd|counter[6]          ; ClockDivider:cd|counter[8]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.687      ;
+; 0.535  ; ClockDivider:cd|counter[8]          ; ClockDivider:cd|counter[10]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.687      ;
+; 0.535  ; ClockDivider:cd|counter[22]         ; ClockDivider:cd|counter[24]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.687      ;
+; 0.536  ; ClockDivider:cd|counter[10]         ; ClockDivider:cd|counter[12]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.688      ;
+; 0.536  ; ClockDivider:cd|counter[1]          ; ClockDivider:cd|counter[3]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.688      ;
+; 0.551  ; ClockDivider:cd|counter[12]         ; ClockDivider:cd|counter[13]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; -0.003     ; 0.700      ;
+; 0.551  ; ClockDivider:cd|counter[16]         ; ClockDivider:cd|counter[18]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.703      ;
+; 0.551  ; ClockDivider:cd|counter[5]          ; ClockDivider:cd|counter[7]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.703      ;
+; 0.551  ; ClockDivider:cd|counter[0]          ; ClockDivider:cd|counter[2]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.703      ;
+; 0.551  ; ClockDivider:cd|counter[2]          ; ClockDivider:cd|counter[4]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.703      ;
+; 0.551  ; ClockDivider:cd|counter[18]         ; ClockDivider:cd|counter[20]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.703      ;
+; 0.552  ; ClockDivider:cd|counter[7]          ; ClockDivider:cd|counter[9]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.704      ;
+; 0.552  ; ClockDivider:cd|counter[9]          ; ClockDivider:cd|counter[11]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.704      ;
+; 0.553  ; ClockDivider:cd|counter[21]         ; ClockDivider:cd|counter[23]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.705      ;
+; 0.553  ; ClockDivider:cd|counter[23]         ; ClockDivider:cd|counter[25]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.705      ;
+; 0.556  ; ClockDivider:cd|counter[4]          ; ClockDivider:cd|counter[5]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.708      ;
+; 0.556  ; ClockDivider:cd|counter[20]         ; ClockDivider:cd|counter[21]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.708      ;
+; 0.560  ; DecrementTime:decMins|outputTime[1] ; DecrementTime:decMins|outputTime[2] ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.712      ;
+; 0.563  ; ClockDivider:cd|counter[13]         ; ClockDivider:cd|counter[16]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.715      ;
+; 0.569  ; ClockDivider:cd|counter[14]         ; ClockDivider:cd|counter[17]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.721      ;
+; 0.570  ; ClockDivider:cd|counter[17]         ; ClockDivider:cd|counter[20]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.722      ;
+; 0.570  ; ClockDivider:cd|counter[6]          ; ClockDivider:cd|counter[9]          ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.722      ;
+; 0.570  ; ClockDivider:cd|counter[8]          ; ClockDivider:cd|counter[11]         ; CLOCK_50                       ; CLOCK_50    ; 0.000        ; 0.000      ; 0.722      ;
++--------+-------------------------------------+-------------------------------------+--------------------------------+-------------+--------------+------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Hold: 'TimerController:sm|state.Reset'                                                                                                             ;
++-------+-----------------------------------+--------------------------+--------------+--------------------------------+--------------+------------+------------+
+; Slack ; From Node                         ; To Node                  ; Launch Clock ; Latch Clock                    ; Relationship ; Clock Skew ; Data Delay ;
++-------+-----------------------------------+--------------------------+--------------+--------------------------------+--------------+------------+------------+
+; 0.873 ; TimerController:sm|state.RunTimer ; TimerController:sm|decEn ; CLOCK_50     ; TimerController:sm|state.Reset ; 0.000        ; -0.453     ; 0.420      ;
++-------+-----------------------------------+--------------------------+--------------+--------------------------------+--------------+------------+------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Minimum Pulse Width: 'CLOCK_50'                                                                              ;
++--------+--------------+----------------+------------------+----------+------------+-------------------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock    ; Clock Edge ; Target                              ;
++--------+--------------+----------------+------------------+----------+------------+-------------------------------------+
+; -1.380 ; 1.000        ; 2.380          ; Port Rate        ; CLOCK_50 ; Rise       ; CLOCK_50                            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|clockReg            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|clockReg            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[0]          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[0]          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[10]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[10]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[11]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[11]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[12]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[12]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[13]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[13]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[14]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[14]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[15]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[15]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[16]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[16]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[17]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[17]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[18]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[18]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[19]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[19]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[1]          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[1]          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[20]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[20]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[21]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[21]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[22]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[22]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[23]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[23]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[24]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[24]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[25]         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[25]         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[2]          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[2]          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[3]          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[3]          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[4]          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[4]          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[5]          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[5]          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[6]          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[6]          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[7]          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[7]          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[8]          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[8]          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[9]          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ClockDivider:cd|counter[9]          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DecrementTime:decMins|outputTime[0] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DecrementTime:decMins|outputTime[0] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DecrementTime:decMins|outputTime[1] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DecrementTime:decMins|outputTime[1] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DecrementTime:decMins|outputTime[2] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DecrementTime:decMins|outputTime[2] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DecrementTime:decMins|outputTime[3] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DecrementTime:decMins|outputTime[3] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DecrementTime:decMins|outputTime[4] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DecrementTime:decMins|outputTime[4] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; TimerController:sm|state.Reset      ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; TimerController:sm|state.Reset      ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; TimerController:sm|state.RunTimer   ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; TimerController:sm|state.RunTimer   ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; TimerController:sm|state.SetMin     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; TimerController:sm|state.SetMin     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; TimerController:sm|state.SetSec     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; TimerController:sm|state.SetSec     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; TimerController:sm|state.SetTimer   ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; TimerController:sm|state.SetTimer   ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; CLOCK_50|combout                    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; CLOCK_50|combout                    ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; CLOCK_50~clkctrl|inclk[0]           ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; CLOCK_50~clkctrl|inclk[0]           ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; CLOCK_50~clkctrl|outclk             ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; CLOCK_50~clkctrl|outclk             ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; cd|clockReg|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; cd|clockReg|clk                     ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; cd|counter[0]|clk                   ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; cd|counter[0]|clk                   ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; cd|counter[10]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; cd|counter[10]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; cd|counter[11]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; cd|counter[11]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; cd|counter[12]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; cd|counter[12]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; cd|counter[13]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; cd|counter[13]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; cd|counter[14]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; cd|counter[14]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; cd|counter[15]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; cd|counter[15]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; cd|counter[16]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; cd|counter[16]|clk                  ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; cd|counter[17]|clk                  ;
++--------+--------------+----------------+------------------+----------+------------+-------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Minimum Pulse Width: 'TimerController:sm|state.Reset'                                                                  ;
++-------+--------------+----------------+------------------+--------------------------------+------------+--------------------------+
+; Slack ; Actual Width ; Required Width ; Type             ; Clock                          ; Clock Edge ; Target                   ;
++-------+--------------+----------------+------------------+--------------------------------+------------+--------------------------+
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; TimerController:sm|state.Reset ; Rise       ; TimerController:sm|decEn ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; TimerController:sm|state.Reset ; Rise       ; TimerController:sm|decEn ;
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; TimerController:sm|state.Reset ; Fall       ; sm|WideOr2~0|combout     ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; TimerController:sm|state.Reset ; Fall       ; sm|WideOr2~0|combout     ;
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; TimerController:sm|state.Reset ; Rise       ; sm|WideOr2~0|datad       ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; TimerController:sm|state.Reset ; Rise       ; sm|WideOr2~0|datad       ;
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; TimerController:sm|state.Reset ; Fall       ; sm|decEn|datab           ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; TimerController:sm|state.Reset ; Fall       ; sm|decEn|datab           ;
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; TimerController:sm|state.Reset ; Rise       ; sm|state.Reset|regout    ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; TimerController:sm|state.Reset ; Rise       ; sm|state.Reset|regout    ;
++-------+--------------+----------------+------------------+--------------------------------+------------+--------------------------+
+
+
++-----------------------------------------------------------------------+
+; Setup Times                                                           ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; KEY[*]    ; CLOCK_50   ; 2.350 ; 2.350 ; Rise       ; CLOCK_50        ;
+;  KEY[0]   ; CLOCK_50   ; 2.350 ; 2.350 ; Rise       ; CLOCK_50        ;
+;  KEY[1]   ; CLOCK_50   ; 1.568 ; 1.568 ; Rise       ; CLOCK_50        ;
+;  KEY[2]   ; CLOCK_50   ; 2.336 ; 2.336 ; Rise       ; CLOCK_50        ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Hold Times                                                              ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; KEY[*]    ; CLOCK_50   ; -1.446 ; -1.446 ; Rise       ; CLOCK_50        ;
+;  KEY[0]   ; CLOCK_50   ; -1.544 ; -1.544 ; Rise       ; CLOCK_50        ;
+;  KEY[1]   ; CLOCK_50   ; -1.446 ; -1.446 ; Rise       ; CLOCK_50        ;
+;  KEY[2]   ; CLOCK_50   ; -1.747 ; -1.747 ; Rise       ; CLOCK_50        ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Clock to Output Times                                                 ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; HEX2[*]   ; CLOCK_50   ; 4.234 ; 4.234 ; Rise       ; CLOCK_50        ;
+;  HEX2[0]  ; CLOCK_50   ; 4.112 ; 4.112 ; Rise       ; CLOCK_50        ;
+;  HEX2[1]  ; CLOCK_50   ; 4.234 ; 4.234 ; Rise       ; CLOCK_50        ;
+;  HEX2[2]  ; CLOCK_50   ; 4.118 ; 4.118 ; Rise       ; CLOCK_50        ;
+;  HEX2[3]  ; CLOCK_50   ; 3.989 ; 3.989 ; Rise       ; CLOCK_50        ;
+;  HEX2[4]  ; CLOCK_50   ; 3.956 ; 3.956 ; Rise       ; CLOCK_50        ;
+;  HEX2[5]  ; CLOCK_50   ; 3.989 ; 3.989 ; Rise       ; CLOCK_50        ;
+;  HEX2[6]  ; CLOCK_50   ; 4.177 ; 4.177 ; Rise       ; CLOCK_50        ;
+; HEX3[*]   ; CLOCK_50   ; 3.737 ; 3.737 ; Rise       ; CLOCK_50        ;
+;  HEX3[1]  ; CLOCK_50   ; 3.737 ; 3.737 ; Rise       ; CLOCK_50        ;
+;  HEX3[4]  ; CLOCK_50   ; 3.737 ; 3.737 ; Rise       ; CLOCK_50        ;
+;  HEX3[6]  ; CLOCK_50   ; 3.737 ; 3.737 ; Rise       ; CLOCK_50        ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Minimum Clock to Output Times                                         ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; HEX2[*]   ; CLOCK_50   ; 3.762 ; 3.762 ; Rise       ; CLOCK_50        ;
+;  HEX2[0]  ; CLOCK_50   ; 3.979 ; 3.979 ; Rise       ; CLOCK_50        ;
+;  HEX2[1]  ; CLOCK_50   ; 4.102 ; 4.102 ; Rise       ; CLOCK_50        ;
+;  HEX2[2]  ; CLOCK_50   ; 3.978 ; 3.978 ; Rise       ; CLOCK_50        ;
+;  HEX2[3]  ; CLOCK_50   ; 3.795 ; 3.795 ; Rise       ; CLOCK_50        ;
+;  HEX2[4]  ; CLOCK_50   ; 3.762 ; 3.762 ; Rise       ; CLOCK_50        ;
+;  HEX2[5]  ; CLOCK_50   ; 3.794 ; 3.794 ; Rise       ; CLOCK_50        ;
+;  HEX2[6]  ; CLOCK_50   ; 4.043 ; 4.043 ; Rise       ; CLOCK_50        ;
+; HEX3[*]   ; CLOCK_50   ; 3.737 ; 3.737 ; Rise       ; CLOCK_50        ;
+;  HEX3[1]  ; CLOCK_50   ; 3.737 ; 3.737 ; Rise       ; CLOCK_50        ;
+;  HEX3[4]  ; CLOCK_50   ; 3.737 ; 3.737 ; Rise       ; CLOCK_50        ;
+;  HEX3[6]  ; CLOCK_50   ; 3.737 ; 3.737 ; Rise       ; CLOCK_50        ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++------------------------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                                            ;
++---------------------------------+----------+--------+----------+---------+---------------------+
+; Clock                           ; Setup    ; Hold   ; Recovery ; Removal ; Minimum Pulse Width ;
++---------------------------------+----------+--------+----------+---------+---------------------+
+; Worst-case Slack                ; -3.386   ; -2.686 ; N/A      ; N/A     ; -1.631              ;
+;  CLOCK_50                       ; -3.386   ; -2.686 ; N/A      ; N/A     ; -1.631              ;
+;  TimerController:sm|state.Reset ; -2.111   ; 0.873  ; N/A      ; N/A     ; 0.500               ;
+; Design-wide TNS                 ; -100.105 ; -5.253 ; 0.0      ; 0.0     ; -46.845             ;
+;  CLOCK_50                       ; -97.994  ; -5.253 ; N/A      ; N/A     ; -46.845             ;
+;  TimerController:sm|state.Reset ; -2.111   ; 0.000  ; N/A      ; N/A     ; 0.000               ;
++---------------------------------+----------+--------+----------+---------+---------------------+
+
+
++-----------------------------------------------------------------------+
+; Setup Times                                                           ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; KEY[*]    ; CLOCK_50   ; 5.351 ; 5.351 ; Rise       ; CLOCK_50        ;
+;  KEY[0]   ; CLOCK_50   ; 5.351 ; 5.351 ; Rise       ; CLOCK_50        ;
+;  KEY[1]   ; CLOCK_50   ; 3.471 ; 3.471 ; Rise       ; CLOCK_50        ;
+;  KEY[2]   ; CLOCK_50   ; 4.607 ; 4.607 ; Rise       ; CLOCK_50        ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Hold Times                                                              ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; KEY[*]    ; CLOCK_50   ; -1.446 ; -1.446 ; Rise       ; CLOCK_50        ;
+;  KEY[0]   ; CLOCK_50   ; -1.544 ; -1.544 ; Rise       ; CLOCK_50        ;
+;  KEY[1]   ; CLOCK_50   ; -1.446 ; -1.446 ; Rise       ; CLOCK_50        ;
+;  KEY[2]   ; CLOCK_50   ; -1.747 ; -1.747 ; Rise       ; CLOCK_50        ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Clock to Output Times                                                 ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; HEX2[*]   ; CLOCK_50   ; 8.250 ; 8.250 ; Rise       ; CLOCK_50        ;
+;  HEX2[0]  ; CLOCK_50   ; 7.917 ; 7.917 ; Rise       ; CLOCK_50        ;
+;  HEX2[1]  ; CLOCK_50   ; 8.250 ; 8.250 ; Rise       ; CLOCK_50        ;
+;  HEX2[2]  ; CLOCK_50   ; 7.956 ; 7.956 ; Rise       ; CLOCK_50        ;
+;  HEX2[3]  ; CLOCK_50   ; 7.653 ; 7.653 ; Rise       ; CLOCK_50        ;
+;  HEX2[4]  ; CLOCK_50   ; 7.617 ; 7.617 ; Rise       ; CLOCK_50        ;
+;  HEX2[5]  ; CLOCK_50   ; 7.586 ; 7.586 ; Rise       ; CLOCK_50        ;
+;  HEX2[6]  ; CLOCK_50   ; 8.138 ; 8.138 ; Rise       ; CLOCK_50        ;
+; HEX3[*]   ; CLOCK_50   ; 6.907 ; 6.907 ; Rise       ; CLOCK_50        ;
+;  HEX3[1]  ; CLOCK_50   ; 6.907 ; 6.907 ; Rise       ; CLOCK_50        ;
+;  HEX3[4]  ; CLOCK_50   ; 6.907 ; 6.907 ; Rise       ; CLOCK_50        ;
+;  HEX3[6]  ; CLOCK_50   ; 6.907 ; 6.907 ; Rise       ; CLOCK_50        ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Minimum Clock to Output Times                                         ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; HEX2[*]   ; CLOCK_50   ; 3.762 ; 3.762 ; Rise       ; CLOCK_50        ;
+;  HEX2[0]  ; CLOCK_50   ; 3.979 ; 3.979 ; Rise       ; CLOCK_50        ;
+;  HEX2[1]  ; CLOCK_50   ; 4.102 ; 4.102 ; Rise       ; CLOCK_50        ;
+;  HEX2[2]  ; CLOCK_50   ; 3.978 ; 3.978 ; Rise       ; CLOCK_50        ;
+;  HEX2[3]  ; CLOCK_50   ; 3.795 ; 3.795 ; Rise       ; CLOCK_50        ;
+;  HEX2[4]  ; CLOCK_50   ; 3.762 ; 3.762 ; Rise       ; CLOCK_50        ;
+;  HEX2[5]  ; CLOCK_50   ; 3.794 ; 3.794 ; Rise       ; CLOCK_50        ;
+;  HEX2[6]  ; CLOCK_50   ; 4.043 ; 4.043 ; Rise       ; CLOCK_50        ;
+; HEX3[*]   ; CLOCK_50   ; 3.737 ; 3.737 ; Rise       ; CLOCK_50        ;
+;  HEX3[1]  ; CLOCK_50   ; 3.737 ; 3.737 ; Rise       ; CLOCK_50        ;
+;  HEX3[4]  ; CLOCK_50   ; 3.737 ; 3.737 ; Rise       ; CLOCK_50        ;
+;  HEX3[6]  ; CLOCK_50   ; 3.737 ; 3.737 ; Rise       ; CLOCK_50        ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Setup Transfers                                                                                             ;
++--------------------------------+--------------------------------+----------+----------+----------+----------+
+; From Clock                     ; To Clock                       ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++--------------------------------+--------------------------------+----------+----------+----------+----------+
+; CLOCK_50                       ; CLOCK_50                       ; 1092     ; 0        ; 0        ; 0        ;
+; TimerController:sm|state.Reset ; CLOCK_50                       ; 7        ; 2        ; 0        ; 0        ;
+; CLOCK_50                       ; TimerController:sm|state.Reset ; 1        ; 0        ; 0        ; 0        ;
++--------------------------------+--------------------------------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Hold Transfers                                                                                              ;
++--------------------------------+--------------------------------+----------+----------+----------+----------+
+; From Clock                     ; To Clock                       ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++--------------------------------+--------------------------------+----------+----------+----------+----------+
+; CLOCK_50                       ; CLOCK_50                       ; 1092     ; 0        ; 0        ; 0        ;
+; TimerController:sm|state.Reset ; CLOCK_50                       ; 7        ; 2        ; 0        ; 0        ;
+; CLOCK_50                       ; TimerController:sm|state.Reset ; 1        ; 0        ; 0        ; 0        ;
++--------------------------------+--------------------------------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
 
 ---------------
@@ -194,10 +1171,10 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 +---------------------------------+-------+------+
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
-; Unconstrained Input Ports       ; 0     ; 0    ;
-; Unconstrained Input Port Paths  ; 0     ; 0    ;
-; Unconstrained Output Ports      ; 0     ; 0    ;
-; Unconstrained Output Port Paths ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 3     ; 3    ;
+; Unconstrained Input Port Paths  ; 43    ; 43   ;
+; Unconstrained Output Ports      ; 10    ; 10   ;
+; Unconstrained Output Port Paths ; 31    ; 31   ;
 +---------------------------------+-------+------+
 
 
@@ -207,41 +1184,64 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Fri Oct 02 00:27:21 2015
+    Info: Processing started: Fri Oct 02 19:49:28 2015
 Info: Command: quartus_sta EggTimerController -c EggTimerController
 Info: qsta_default_script.tcl version: #1
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (21077): Low junction temperature is 0 degrees C
 Info (21077): High junction temperature is 85 degrees C
+Warning (335093): TimeQuest Timing Analyzer is analyzing 1 combinational loops as latches.
 Critical Warning (332012): Synopsys Design Constraints File file not found: 'EggTimerController.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
 Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
-Info (332096): The command derive_clocks did not find any clocks to derive.  No clocks were created or changed.
-Warning (332068): No clocks defined in design.
+Info (332105): Deriving Clocks
+    Info (332105): create_clock -period 1.000 -name CLOCK_50 CLOCK_50
+    Info (332105): create_clock -period 1.000 -name TimerController:sm|state.Reset TimerController:sm|state.Reset
 Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
-Info (332159): No clocks to report
 Info: Analyzing Slow Model
-Info (332140): No fmax paths to report
-Info (332140): No Setup paths to report
-Info (332140): No Hold paths to report
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case setup slack is -3.386
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -3.386       -97.994 CLOCK_50 
+    Info (332119):    -2.111        -2.111 TimerController:sm|state.Reset 
+Info (332146): Worst-case hold slack is -2.686
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -2.686        -4.884 CLOCK_50 
+    Info (332119):     1.501         0.000 TimerController:sm|state.Reset 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
-Info (332140): No Minimum Pulse Width paths to report
+Info (332146): Worst-case minimum pulse width slack is -1.631
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -1.631       -46.845 CLOCK_50 
+    Info (332119):     0.500         0.000 TimerController:sm|state.Reset 
 Info (332001): The selected device family is not supported by the report_metastability command.
 Info: Analyzing Fast Model
-Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
-Info (332096): The command derive_clocks did not find any clocks to derive.  No clocks were created or changed.
-Warning (332068): No clocks defined in design.
-Info (332140): No Setup paths to report
-Info (332140): No Hold paths to report
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case setup slack is -0.729
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -0.729       -18.754 CLOCK_50 
+    Info (332119):    -0.425        -0.425 TimerController:sm|state.Reset 
+Info (332146): Worst-case hold slack is -1.715
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -1.715        -5.253 CLOCK_50 
+    Info (332119):     0.873         0.000 TimerController:sm|state.Reset 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
-Info (332140): No Minimum Pulse Width paths to report
+Info (332146): Worst-case minimum pulse width slack is -1.380
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -1.380       -38.380 CLOCK_50 
+    Info (332119):     0.500         0.000 TimerController:sm|state.Reset 
 Info (332001): The selected device family is not supported by the report_metastability command.
-Info (332101): Design is fully constrained for setup requirements
-Info (332101): Design is fully constrained for hold requirements
-Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 4 warnings
-    Info: Peak virtual memory: 423 megabytes
-    Info: Processing ended: Fri Oct 02 00:27:22 2015
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
+Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 422 megabytes
+    Info: Processing ended: Fri Oct 02 19:49:29 2015
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 

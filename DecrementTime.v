@@ -1,4 +1,4 @@
-module DecrementTime(clk, reset, inputTime, decEnable, outputTime, isZero) {
+module DecrementTime(clk, reset, inputTime, decEnable, outputTime, isZero);
 
 	input reset, clk, decEnable;
 	input[7:0] inputTime;
@@ -28,5 +28,3 @@ module DecrementTime(clk, reset, inputTime, decEnable, outputTime, isZero) {
 	end
 
 endmodule
-
-}

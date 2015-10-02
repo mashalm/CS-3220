@@ -25,10 +25,10 @@ module EggTimerController(CLOCK_50, KEY, SW, HEX3, HEX2, HEX1, HEX0, LEDR);
 	swSecEn, swMinEn, decEn, flashEn, inRunTimerState);
 
 	//validate the switch inputs
-	wire secondsVal;
+	wire[7:0] secondsVal;
 	SwitchValidator svSecs(clk, swSecsEn, SW, secondsVals);
 	
-	wire minutesVal;
+	wire[7:0] minutesVal;
 	SwitchValidator svMins(clk, swMinsEn, SW, minutesVal);
 
 	//decrement only after every second
@@ -37,19 +37,19 @@ module EggTimerController(CLOCK_50, KEY, SW, HEX3, HEX2, HEX1, HEX0, LEDR);
 	
 	//have a mux with output val of decSave?
 	wire isSecsDone;
-	DecrementTime decSecs(clk, reset, decSave[3:0], decEn & clkOut, secondsVals, isSecsDone);
+	DecrementTime decSecs(clk, reset, secondsVal, decEn & clkOut, secondsVals, isSecsDone);
 	
 	wire isMinsDone;
-	DecrementTime decMins(clk, reset, decSave[7:4], decEn & isSecsDone & clkOut, minutesVal, isMinsDone);
+	DecrementTime decMins(clk, reset, minutesVal, decEn & isSecsDone & clkOut, minutesVal, isMinsDone);
 	
 	wire[9:0] leds;
 	assign LEDR[9:0] = leds[9:0];
-	flashLights fl(clk, flashEn & clkOut, leds)
+	flashLights fl(clk, flashEn & clkOut, leds);
 
 	//have each seven seg display the time
 	dec2_7seg(secondsVal[3:0], HEX0);
 	dec2_7seg(secondsVal[7:4], HEX1);
 	dec2_7seg(minutesVal[3:0], HEX2);
-	dec2_7seg(minutesTens[7:4], HEX3);
+	dec2_7seg(minutesVal[7:4], HEX3);
 
 endmodule
