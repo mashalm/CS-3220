@@ -38,11 +38,11 @@ module EggTimerController(CLOCK_50, KEY, SW, HEX3, HEX2, HEX1, HEX0, LEDR);
 	//have a mux with output val of decSave?
 	wire isSecsDone;
 	wire[7:0] secondsValDec;
-	DecrementTime decSecs(.clk(clk), .reset(reset), .inputTime(swSecEn ? secondsValSw : secondsValDec), .decEnable(decEn & clkOut), .outputTime(secondsValDec), .isZero(isSecsDone));
+	DecrementTime decSecs(.clk(clk), .reset(reset), .inputTime(swSecEn ? secondsValSw : secondsValDec), .wrtEn(swSecEn), .decEnable(decEn & clkOut), .outputTime(secondsValDec), .isZero(isSecsDone));
 	
 	wire isMinsDone;
 	wire[7:0] minutesValDec;
-	DecrementTime decMins(.clk(clk), .reset(reset), .inputTime(swMinEn ? minutesValSw : minutesValDec), .decEnable(decEn & isSecsDone & clkOut), .outputTime(minutesValDec), .isZero(isMinsDone));
+	DecrementTime decMins(.clk(clk), .reset(reset), .inputTime(swMinEn ? minutesValSw : minutesValDec), .wrtEn(swMinEn), .decEnable(decEn & isSecsDone & clkOut), .outputTime(minutesValDec), .isZero(isMinsDone));
 	
 	wire[9:0] leds;
 	assign LEDR[9:0] = leds[9:0];

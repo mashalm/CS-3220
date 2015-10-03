@@ -1,5 +1,5 @@
 Analysis & Synthesis report for EggTimerController
-Fri Oct 02 19:49:15 2015
+Fri Oct 02 21:12:22 2015
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -14,20 +14,16 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. State Machine - |EggTimerController|TimerController:sm|state
-  9. User-Specified and Inferred Latches
- 10. Registers Removed During Synthesis
- 11. Removed Registers Triggering Further Register Optimizations
- 12. General Register Statistics
- 13. Multiplexer Restructuring Statistics (Restructuring Performed)
- 14. Parameter Settings for User Entity Instance: TimerController:sm
- 15. Port Connectivity Checks: "DecrementTime:decMins"
- 16. Port Connectivity Checks: "DecrementTime:decSecs"
- 17. Port Connectivity Checks: "SwitchValidator:svMins"
- 18. Port Connectivity Checks: "SwitchValidator:svSecs"
- 19. Port Connectivity Checks: "TimerController:sm"
- 20. Elapsed Time Per Partition
- 21. Analysis & Synthesis Messages
- 22. Analysis & Synthesis Suppressed Messages
+  9. Registers Removed During Synthesis
+ 10. Removed Registers Triggering Further Register Optimizations
+ 11. General Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: TimerController:sm
+ 14. Port Connectivity Checks: "DecrementTime:decMins"
+ 15. Port Connectivity Checks: "TimerController:sm"
+ 16. Elapsed Time Per Partition
+ 17. Analysis & Synthesis Messages
+ 18. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -53,15 +49,15 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Oct 02 19:49:15 2015           ;
+; Analysis & Synthesis Status        ; Successful - Fri Oct 02 21:12:21 2015           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; EggTimerController                              ;
 ; Top-level Entity Name              ; EggTimerController                              ;
 ; Family                             ; Cyclone II                                      ;
-; Total logic elements               ; 61                                              ;
-;     Total combinational functions  ; 61                                              ;
-;     Dedicated logic registers      ; 37                                              ;
-; Total registers                    ; 37                                              ;
+; Total logic elements               ; 133                                             ;
+;     Total combinational functions  ; 125                                             ;
+;     Dedicated logic registers      ; 64                                              ;
+; Total registers                    ; 64                                              ;
 ; Total pins                         ; 50                                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
@@ -186,42 +182,48 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+----------+
 ; Resource                                    ; Usage    ;
 +---------------------------------------------+----------+
-; Estimated Total logic elements              ; 61       ;
+; Estimated Total logic elements              ; 133      ;
 ;                                             ;          ;
-; Total combinational functions               ; 61       ;
+; Total combinational functions               ; 125      ;
 ; Logic element usage by number of LUT inputs ;          ;
-;     -- 4 input functions                    ; 25       ;
-;     -- 3 input functions                    ; 6        ;
-;     -- <=2 input functions                  ; 30       ;
+;     -- 4 input functions                    ; 55       ;
+;     -- 3 input functions                    ; 39       ;
+;     -- <=2 input functions                  ; 31       ;
 ;                                             ;          ;
 ; Logic elements by mode                      ;          ;
-;     -- normal mode                          ; 36       ;
+;     -- normal mode                          ; 100      ;
 ;     -- arithmetic mode                      ; 25       ;
 ;                                             ;          ;
-; Total registers                             ; 37       ;
-;     -- Dedicated logic registers            ; 37       ;
+; Total registers                             ; 64       ;
+;     -- Dedicated logic registers            ; 64       ;
 ;     -- I/O registers                        ; 0        ;
 ;                                             ;          ;
 ; I/O pins                                    ; 50       ;
 ; Embedded Multiplier 9-bit elements          ; 0        ;
 ; Maximum fan-out node                        ; CLOCK_50 ;
-; Maximum fan-out                             ; 37       ;
-; Total fan-out                               ; 292      ;
-; Average fan-out                             ; 1.97     ;
+; Maximum fan-out                             ; 64       ;
+; Total fan-out                               ; 636      ;
+; Average fan-out                             ; 2.66     ;
 +---------------------------------------------+----------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                               ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                       ; Library Name ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------+--------------+
-; |EggTimerController        ; 61 (0)            ; 37 (0)       ; 0           ; 0            ; 0       ; 0         ; 50   ; 0            ; |EggTimerController                       ; work         ;
-;    |ClockDivider:cd|       ; 36 (36)           ; 27 (27)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EggTimerController|ClockDivider:cd       ; work         ;
-;    |DecrementTime:decMins| ; 8 (8)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EggTimerController|DecrementTime:decMins ; work         ;
-;    |TimerController:sm|    ; 9 (9)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EggTimerController|TimerController:sm    ; work         ;
-;    |dec2_7seg:comb_22|     ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EggTimerController|dec2_7seg:comb_22     ; work         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------+--------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                 ;
++-----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------+--------------+
+; Compilation Hierarchy Node  ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                        ; Library Name ;
++-----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------+--------------+
+; |EggTimerController         ; 125 (12)          ; 64 (0)       ; 0           ; 0            ; 0       ; 0         ; 50   ; 0            ; |EggTimerController                        ; work         ;
+;    |ClockDivider:cd|        ; 36 (36)           ; 27 (27)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EggTimerController|ClockDivider:cd        ; work         ;
+;    |DecrementTime:decMins|  ; 13 (13)           ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EggTimerController|DecrementTime:decMins  ; work         ;
+;    |DecrementTime:decSecs|  ; 13 (13)           ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EggTimerController|DecrementTime:decSecs  ; work         ;
+;    |SwitchValidator:svMins| ; 11 (11)           ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EggTimerController|SwitchValidator:svMins ; work         ;
+;    |SwitchValidator:svSecs| ; 1 (1)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EggTimerController|SwitchValidator:svSecs ; work         ;
+;    |TimerController:sm|     ; 7 (7)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EggTimerController|TimerController:sm     ; work         ;
+;    |dec2_7seg:d1|           ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EggTimerController|dec2_7seg:d1           ; work         ;
+;    |dec2_7seg:d2|           ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EggTimerController|dec2_7seg:d2           ; work         ;
+;    |dec2_7seg:d3|           ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EggTimerController|dec2_7seg:d3           ; work         ;
+;    |dec2_7seg:d4|           ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EggTimerController|dec2_7seg:d4           ; work         ;
++-----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -240,50 +242,31 @@ Encoding Type:  One-Hot
 +----------------+-------------+----------------+----------------+--------------+--------------+-------------+
 
 
-+----------------------------------------------------------------------------------------------------------+
-; User-Specified and Inferred Latches                                                                      ;
-+----------------------------------------------------+----------------------------+------------------------+
-; Latch Name                                         ; Latch Enable Signal        ; Free of Timing Hazards ;
-+----------------------------------------------------+----------------------------+------------------------+
-; TimerController:sm|decEn                           ; TimerController:sm|WideOr2 ; yes                    ;
-; Number of user-specified and inferred latches = 1  ;                            ;                        ;
-+----------------------------------------------------+----------------------------+------------------------+
-Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
++---------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                              ;
++----------------------------------------+----------------------------------------+
+; Register name                          ; Reason for Removal                     ;
++----------------------------------------+----------------------------------------+
+; DecrementTime:decSecs|isZero           ; Stuck at VCC due to stuck port data_in ;
+; TimerController:sm|state~4             ; Lost fanout                            ;
+; TimerController:sm|state~5             ; Lost fanout                            ;
+; TimerController:sm|state~6             ; Lost fanout                            ;
+; TimerController:sm|state.Flash         ; Stuck at GND due to stuck port data_in ;
+; flashLights:fl|ledr[0..9]              ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 15 ;                                        ;
++----------------------------------------+----------------------------------------+
 
 
-+------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                       ;
-+----------------------------------------+-------------------------------------------------+
-; Register name                          ; Reason for Removal                              ;
-+----------------------------------------+-------------------------------------------------+
-; DecrementTime:decSecs|isZero           ; Stuck at VCC due to stuck port data_in          ;
-; DecrementTime:decSecs|outputTime[0..7] ; Lost fanout                                     ;
-; DecrementTime:decMins|outputTime[6]    ; Merged with DecrementTime:decMins|outputTime[4] ;
-; DecrementTime:decMins|outputTime[7]    ; Merged with DecrementTime:decMins|outputTime[5] ;
-; DecrementTime:decMins|outputTime[5]    ; Stuck at GND due to stuck port data_in          ;
-; TimerController:sm|state~3             ; Lost fanout                                     ;
-; TimerController:sm|state~4             ; Lost fanout                                     ;
-; TimerController:sm|state~5             ; Lost fanout                                     ;
-; TimerController:sm|state.Flash         ; Stuck at GND due to stuck port data_in          ;
-; flashLights:fl|ledr[0..9]              ; Stuck at GND due to stuck port data_in          ;
-; Total Number of Removed Registers = 26 ;                                                 ;
-+----------------------------------------+-------------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                            ;
-+--------------------------------+---------------------------+---------------------------------------------------------------------------+
-; Register name                  ; Reason for Removal        ; Registers Removed due to This Register                                    ;
-+--------------------------------+---------------------------+---------------------------------------------------------------------------+
-; TimerController:sm|state.Flash ; Stuck at GND              ; flashLights:fl|ledr[0], flashLights:fl|ledr[1], flashLights:fl|ledr[2],   ;
-;                                ; due to stuck port data_in ; flashLights:fl|ledr[3], flashLights:fl|ledr[4], flashLights:fl|ledr[5],   ;
-;                                ;                           ; flashLights:fl|ledr[6], flashLights:fl|ledr[7], flashLights:fl|ledr[8],   ;
-;                                ;                           ; flashLights:fl|ledr[9]                                                    ;
-; DecrementTime:decSecs|isZero   ; Stuck at VCC              ; DecrementTime:decSecs|outputTime[3], DecrementTime:decSecs|outputTime[2], ;
-;                                ; due to stuck port data_in ; DecrementTime:decSecs|outputTime[1], DecrementTime:decSecs|outputTime[4], ;
-;                                ;                           ; DecrementTime:decSecs|outputTime[5], DecrementTime:decSecs|outputTime[6], ;
-;                                ;                           ; DecrementTime:decSecs|outputTime[7], DecrementTime:decMins|outputTime[5]  ;
-+--------------------------------+---------------------------+---------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                          ;
++--------------------------------+---------------------------+-------------------------------------------------------------------------+
+; Register name                  ; Reason for Removal        ; Registers Removed due to This Register                                  ;
++--------------------------------+---------------------------+-------------------------------------------------------------------------+
+; TimerController:sm|state.Flash ; Stuck at GND              ; flashLights:fl|ledr[0], flashLights:fl|ledr[1], flashLights:fl|ledr[2], ;
+;                                ; due to stuck port data_in ; flashLights:fl|ledr[3], flashLights:fl|ledr[4], flashLights:fl|ledr[5], ;
+;                                ;                           ; flashLights:fl|ledr[6], flashLights:fl|ledr[7], flashLights:fl|ledr[8], ;
+;                                ;                           ; flashLights:fl|ledr[9]                                                  ;
++--------------------------------+---------------------------+-------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -291,12 +274,12 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 37    ;
-; Number of registers using Synchronous Clear  ; 27    ;
-; Number of registers using Synchronous Load   ; 0     ;
+; Total registers                              ; 64    ;
+; Number of registers using Synchronous Clear  ; 34    ;
+; Number of registers using Synchronous Load   ; 8     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 4     ;
+; Number of registers using Clock Enable       ; 32    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -306,10 +289,20 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                              ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |EggTimerController|DecrementTime:decMins|outputTime[3] ;
-; 5:1                ; 26 bits   ; 78 LEs        ; 26 LEs               ; 52 LEs                 ; Yes        ; |EggTimerController|ClockDivider:cd|counter[17]         ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |EggTimerController|dec2_7seg:comb_22|display[6]        ;
-; 9:1                ; 3 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; No         ; |EggTimerController|TimerController:sm|Selector0        ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |EggTimerController|SwitchValidator:svSecs|swVal[3]     ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |EggTimerController|SwitchValidator:svMins|swVal[3]     ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |EggTimerController|DecrementTime:decMins|outputTime[4] ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |EggTimerController|DecrementTime:decMins|outputTime[2] ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |EggTimerController|DecrementTime:decSecs|outputTime[7] ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |EggTimerController|DecrementTime:decSecs|outputTime[3] ;
+; 5:1                ; 26 bits   ; 78 LEs        ; 26 LEs               ; 52 LEs                 ; Yes        ; |EggTimerController|ClockDivider:cd|counter[13]         ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |EggTimerController|SwitchValidator:svSecs|swVal[7]     ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |EggTimerController|SwitchValidator:svMins|swVal[7]     ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |EggTimerController|dec2_7seg:d4|display[0]             ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |EggTimerController|dec2_7seg:d3|display[5]             ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |EggTimerController|dec2_7seg:d2|display[0]             ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |EggTimerController|dec2_7seg:d1|display[5]             ;
+; 9:1                ; 3 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; No         ; |EggTimerController|TimerController:sm|Selector5        ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
 
 
@@ -339,44 +332,12 @@ Note: In order to hide this table in the UI and the text report file, please set
 +--------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "DecrementTime:decSecs"                                                                                                              ;
-+------------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------+
-; Port       ; Type   ; Severity ; Details                                                                                                                       ;
-+------------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------+
-; outputTime ; Output ; Warning  ; Output or bidir port (8 bits) is wider than the port expression (1 bits) it drives; bit(s) "outputTime[7..1]" have no fanouts ;
-+------------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------+
-
-
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "SwitchValidator:svMins"                                                                                                                                                              ;
-+----------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port     ; Type   ; Severity ; Details                                                                                                                                                                          ;
-+----------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; readSwEn ; Input  ; Warning  ; Input port expression (8 bits) is wider than the input port (1 bits) it drives.  The 7 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
-; swVal    ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                                                         ;
-+----------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "SwitchValidator:svSecs"                                                                                                                                                              ;
-+----------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port     ; Type   ; Severity ; Details                                                                                                                                                                          ;
-+----------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; readSwEn ; Input  ; Warning  ; Input port expression (8 bits) is wider than the input port (1 bits) it drives.  The 7 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
-; switches ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (8 bits) it drives.  Extra input bit(s) "switches[7..1]" will be connected to GND.                                 ;
-; swVal    ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                                                         ;
-+----------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-
 +---------------------------------------------------------------------------------------------------------------------------+
 ; Port Connectivity Checks: "TimerController:sm"                                                                            ;
 +-----------------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port            ; Type   ; Severity ; Details                                                                             ;
 +-----------------+--------+----------+-------------------------------------------------------------------------------------+
 ; isTimeFlat      ; Input  ; Info     ; Stuck at GND                                                                        ;
-; swSecEn         ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; swMinEn         ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 ; inRunTimerState ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +-----------------+--------+----------+-------------------------------------------------------------------------------------+
 
@@ -386,7 +347,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:00     ;
 +----------------+--------------+
 
 
@@ -396,7 +357,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Fri Oct 02 19:49:11 2015
+    Info: Processing started: Fri Oct 02 21:12:20 2015
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off EggTimerController -c EggTimerController
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file eggtimercontroller.v
@@ -415,105 +376,24 @@ Info (12021): Found 1 design units, including 1 entities, in source file switchv
 Warning (12019): Can't analyze file -- file decrementMux.v is missing
 Warning (10236): Verilog HDL Implicit Net warning at EggTimerController.v(24): created implicit net for "minsIsDone"
 Warning (10236): Verilog HDL Implicit Net warning at EggTimerController.v(24): created implicit net for "secsIsDone"
-Warning (10236): Verilog HDL Implicit Net warning at EggTimerController.v(25): created implicit net for "swSecEn"
-Warning (10236): Verilog HDL Implicit Net warning at EggTimerController.v(25): created implicit net for "swMinEn"
 Warning (10236): Verilog HDL Implicit Net warning at EggTimerController.v(25): created implicit net for "flashEn"
 Warning (10236): Verilog HDL Implicit Net warning at EggTimerController.v(25): created implicit net for "inRunTimerState"
-Warning (10236): Verilog HDL Implicit Net warning at EggTimerController.v(29): created implicit net for "secondsVals"
-Critical Warning (10846): Verilog HDL Instantiation warning at EggTimerController.v(50): instance has no name
-Critical Warning (10846): Verilog HDL Instantiation warning at EggTimerController.v(51): instance has no name
-Critical Warning (10846): Verilog HDL Instantiation warning at EggTimerController.v(52): instance has no name
-Critical Warning (10846): Verilog HDL Instantiation warning at EggTimerController.v(53): instance has no name
 Info (12127): Elaborating entity "EggTimerController" for the top level hierarchy
 Warning (10030): Net "minsIsDone" at EggTimerController.v(24) has no driver or initial value, using a default initial value '0'
 Warning (10030): Net "secsIsDone" at EggTimerController.v(24) has no driver or initial value, using a default initial value '0'
 Warning (12125): Using design file timercontroller.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
     Info (12023): Found entity 1: TimerController
 Info (12128): Elaborating entity "TimerController" for hierarchy "TimerController:sm"
-Warning (10240): Verilog HDL Always Construct warning at timercontroller.v(11): inferring latch(es) for variable "swSecEn", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at timercontroller.v(11): inferring latch(es) for variable "swMinEn", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at timercontroller.v(11): inferring latch(es) for variable "decEn", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at timercontroller.v(11): inferring latch(es) for variable "flashEn", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at timercontroller.v(11): inferring latch(es) for variable "inRunTimerState", which holds its previous value in one or more paths through the always construct
-Info (10041): Inferred latch for "inRunTimerState" at timercontroller.v(11)
-Info (10041): Inferred latch for "flashEn" at timercontroller.v(11)
-Info (10041): Inferred latch for "decEn" at timercontroller.v(11)
-Info (10041): Inferred latch for "swMinEn" at timercontroller.v(11)
-Info (10041): Inferred latch for "swSecEn" at timercontroller.v(11)
+Warning (10270): Verilog HDL Case Statement warning at timercontroller.v(17): incomplete case statement has no default case item
+Info (10264): Verilog HDL Case Statement information at timercontroller.v(17): all case item expressions in this case statement are onehot
 Info (12128): Elaborating entity "SwitchValidator" for hierarchy "SwitchValidator:svSecs"
 Info (12128): Elaborating entity "ClockDivider" for hierarchy "ClockDivider:cd"
 Warning (10230): Verilog HDL assignment warning at ClockDivider.v(14): truncated value with size 32 to match size of target (26)
 Info (12128): Elaborating entity "DecrementTime" for hierarchy "DecrementTime:decSecs"
-Warning (10230): Verilog HDL assignment warning at DecrementTime.v(15): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at DecrementTime.v(17): truncated value with size 32 to match size of target (4)
 Info (12128): Elaborating entity "flashLights" for hierarchy "flashLights:fl"
-Info (12128): Elaborating entity "dec2_7seg" for hierarchy "dec2_7seg:comb_20"
-Warning (12011): Net is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[7]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[6]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[5]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[4]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[3]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[2]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[1]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[0]" is missing source, defaulting to GND
-Warning (12011): Net is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[7]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[6]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[5]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[4]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[3]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[2]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[1]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[0]" is missing source, defaulting to GND
-Warning (12011): Net is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[7]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[6]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[5]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[4]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[3]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[2]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[1]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[0]" is missing source, defaulting to GND
-Warning (12011): Net is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[7]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[6]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[5]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[4]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[3]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[2]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[1]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[0]" is missing source, defaulting to GND
-Warning (12011): Net is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[7]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[6]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[5]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[4]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[3]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[2]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[1]" is missing source, defaulting to GND
-    Warning (12110): Net "secondsVal[0]" is missing source, defaulting to GND
-Warning (12241): 3 hierarchies have connectivity warnings - see the Connectivity Checks report folder
-Warning (13012): Latch TimerController:sm|decEn has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal TimerController:sm|state.RunTimer
+Info (12128): Elaborating entity "dec2_7seg" for hierarchy "dec2_7seg:d1"
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "HEX3[0]" is stuck at GND
-    Warning (13410): Pin "HEX3[2]" is stuck at GND
-    Warning (13410): Pin "HEX3[3]" is stuck at GND
-    Warning (13410): Pin "HEX3[5]" is stuck at GND
-    Warning (13410): Pin "HEX1[0]" is stuck at GND
-    Warning (13410): Pin "HEX1[1]" is stuck at GND
-    Warning (13410): Pin "HEX1[2]" is stuck at GND
-    Warning (13410): Pin "HEX1[3]" is stuck at GND
-    Warning (13410): Pin "HEX1[4]" is stuck at GND
-    Warning (13410): Pin "HEX1[5]" is stuck at GND
-    Warning (13410): Pin "HEX1[6]" is stuck at VCC
-    Warning (13410): Pin "HEX0[0]" is stuck at GND
-    Warning (13410): Pin "HEX0[1]" is stuck at GND
-    Warning (13410): Pin "HEX0[2]" is stuck at GND
-    Warning (13410): Pin "HEX0[3]" is stuck at GND
-    Warning (13410): Pin "HEX0[4]" is stuck at GND
-    Warning (13410): Pin "HEX0[5]" is stuck at GND
-    Warning (13410): Pin "HEX0[6]" is stuck at VCC
     Warning (13410): Pin "LEDR[0]" is stuck at GND
     Warning (13410): Pin "LEDR[1]" is stuck at GND
     Warning (13410): Pin "LEDR[2]" is stuck at GND
@@ -524,27 +404,18 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "LEDR[7]" is stuck at GND
     Warning (13410): Pin "LEDR[8]" is stuck at GND
     Warning (13410): Pin "LEDR[9]" is stuck at GND
-Info (17049): 11 registers lost all their fanouts during netlist optimizations.
+Info (17049): 3 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file C:/Users/Mashal/Documents/2015-Fall/CS3220/Proj2/output_files/EggTimerController.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 8 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "SW[0]"
-    Warning (15610): No output dependent on input pin "SW[1]"
-    Warning (15610): No output dependent on input pin "SW[2]"
-    Warning (15610): No output dependent on input pin "SW[3]"
-    Warning (15610): No output dependent on input pin "SW[4]"
-    Warning (15610): No output dependent on input pin "SW[5]"
-    Warning (15610): No output dependent on input pin "SW[6]"
-    Warning (15610): No output dependent on input pin "SW[7]"
-Info (21057): Implemented 111 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 191 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 12 input pins
     Info (21059): Implemented 38 output pins
-    Info (21061): Implemented 61 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 110 warnings
+    Info (21061): Implemented 141 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 24 warnings
     Info: Peak virtual memory: 480 megabytes
-    Info: Processing ended: Fri Oct 02 19:49:15 2015
-    Info: Elapsed time: 00:00:04
+    Info: Processing ended: Fri Oct 02 21:12:22 2015
+    Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:01
 
 

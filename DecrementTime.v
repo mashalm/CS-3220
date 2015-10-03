@@ -1,6 +1,6 @@
-module DecrementTime(clk, reset, inputTime, decEnable, outputTime, isZero);
+module DecrementTime(clk, reset, inputTime, wrtEn, decEnable, outputTime, isZero);
 
-	input reset, clk, decEnable;
+	input reset, clk, decEnable, wrtEn;
 	input[7:0] inputTime;
 	output[7:0] outputTime;
 	output isZero;
@@ -11,6 +11,8 @@ module DecrementTime(clk, reset, inputTime, decEnable, outputTime, isZero);
 	always @(posedge clk) begin
 		if(reset == 1'b1)
 			outputTime <= 8'b00000000;
+		else if(wrtEn == 1'b1)
+			outputTime <= inputTime;
 		else if(decEnable == 1'b1) begin
 			outputTime[3:0] <= inputTime[3:0] - 1;
 			if(outputTime[3:0] == 4'b0000) begin
