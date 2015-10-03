@@ -9,7 +9,13 @@ module TimerController(clk, reset, set, startStop, isTimeFlat, swSecEn, swMinEn,
 	reg swSecEn, swMinEn, decEn, flashEn, inRunTimerState; // inRunTimerState is the selection bit in mux to choose between the data from swtich validator and the value from decrementor
 	reg[2:0] state;
 	always @(state) begin
+				swSecEn = false;
+				swMinEn = false;
+				decEn = false;
+				flashEn = false;
+				inRunTimerState = false;
 		case (state) 
+		/*
 			Reset: begin
 				swSecEn <= false;
 				swMinEn <= false;
@@ -17,22 +23,23 @@ module TimerController(clk, reset, set, startStop, isTimeFlat, swSecEn, swMinEn,
 				flashEn <= false;
 				inRunTimerState <= false;
 			end
+			*/
 			SetSec: begin
-				swSecEn <= true;
+				swSecEn = true;
 			end
 			SetMin: begin
-				swSecEn <= false;
-				swMinEn <= true;
+				swSecEn = false;
+				swMinEn = true;
 			end
 			SetTimer: begin
-				swMinEn <= false;
+				swMinEn = false;
 			end
 			RunTimer: begin
-				decEn <= true;
-				inRunTimerState <= true;
+				decEn = true;
+				inRunTimerState = true;
 			end
 			Flash: begin
-				flashEn <= true; // turn on the LED
+				flashEn = true; // turn on the LED
 			end
 		endcase
 	end
