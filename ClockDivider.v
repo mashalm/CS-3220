@@ -5,7 +5,7 @@ module ClockDivider(clock, reset, isFlashFreq, clockOut);
 	input isFlashFreq;
 	output clockOut;
 	
-	reg[25:0] counter = 0;
+	reg[31:0] counter = 0;
 	reg clockReg;
 	
 	assign clockOut = clockReg;
@@ -13,13 +13,13 @@ module ClockDivider(clock, reset, isFlashFreq, clockOut);
 	always@(posedge clock) begin
 		counter <= counter + 1;
 		if(reset) begin
-			counter <= 26'b0000000000000000000000000;
+			counter <= 0;
 		end
 		//if it's not in the flashing state
 		else if(isFlashFreq == 1'b0) begin
 			if(counter == 50000000) begin
 				clockReg <= ~clockReg;
-				counter <= 26'b0000000000000000000000000;
+				counter <= 0;
 			end
 		end
 		else if(isFlashFreq == 1'b1) begin
@@ -27,7 +27,7 @@ module ClockDivider(clock, reset, isFlashFreq, clockOut);
 			if(counter == 25000000) begin
 			//.5 cycles is twice
 				clockReg <= ~clockReg;
-				counter <= 26'b00000000000000000000000000;
+				counter <= 0;
 			end
 		end
 	end

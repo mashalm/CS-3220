@@ -1,0 +1,172 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\Mashal\Documents\2015-Fall\CS3220\TimerMashalMannan\simulation\modelsim
+vClockDivider
+IOKjDNUOnX6_d4Wl^k4g?L0
+VJS4gkJjbZSXnCPkh<i1VS3
+Z1 dC:\Users\Mashal\Documents\2015-Fall\CS3220\TimerMashalMannan\simulation\modelsim
+w1446322571
+8C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/ClockDivider.v
+FC:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/ClockDivider.v
+L0 1
+Z2 OV;L;10.1d;51
+r1
+31
+Z3 o-vlog01compat -work work -O0
+Z4 !s92 -vlog01compat -work work +incdir+C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan -O0
+n@clock@divider
+!i10b 1
+!s100 i^WK74mNNaP]EU0NMVj;c2
+!s85 0
+!s108 1446411425.732000
+!s107 C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/ClockDivider.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan|C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/ClockDivider.v|
+!s101 -O0
+vdec2_7seg
+I2>TG`6;`Eo>@6cT^BjNV<2
+V>=@`lWP8z@0bHzMjKAf>H1
+R1
+w1443743485
+8C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/dec2_7seg.v
+FC:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/dec2_7seg.v
+L0 1
+R2
+r1
+31
+R3
+R4
+!i10b 1
+!s100 ]M3^4B[ZflIU>B8n;jE3i3
+!s85 0
+!s108 1446411425.476000
+!s107 C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/dec2_7seg.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan|C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/dec2_7seg.v|
+!s101 -O0
+vDecrementTime
+I`MC5QfHPM:M:kP9Ydz?NV2
+VE;;P2z^k<_zY08hG];5co1
+R1
+w1443831138
+8C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/DecrementTime.v
+FC:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/DecrementTime.v
+L0 1
+R2
+r1
+31
+R3
+R4
+n@decrement@time
+!i10b 1
+!s100 jV?l_k[Gd01]F4>bjZ]0G2
+!s85 0
+!s108 1446411426.099000
+!s107 C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/DecrementTime.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan|C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/DecrementTime.v|
+!s101 -O0
+vEggTimerController
+IX^[Xb]3Gh?m?O=PANFWXN0
+VHUJV>JGo@NO_>bUei3>VI3
+R1
+w1446062028
+8C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/EggTimerController.v
+FC:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/EggTimerController.v
+L0 5
+R2
+r1
+31
+R3
+n@egg@timer@controller
+R4
+!i10b 1
+!s100 lPE@oSMzD8CmMO;S0Qfm11
+!s85 0
+!s108 1446411425.214000
+!s107 C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/EggTimerController.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan|C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/EggTimerController.v|
+!s101 -O0
+vflashLights
+IWcKRg:d6hjhDEn_TCG8<h0
+VH`XkVoH1<IdQb65W:==Al0
+R1
+w1443826097
+8C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/flashLights.v
+FC:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/flashLights.v
+L0 1
+R2
+r1
+31
+R3
+R4
+nflash@lights
+!i10b 1
+!s100 @J58CIb[oWW1f^^cQ5?j10
+!s85 0
+!s108 1446411426.470000
+!s107 C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/flashLights.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan|C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/flashLights.v|
+!s101 -O0
+vSwitchValidator
+IW50kXY3ETbc4IAcd=GVV41
+VoN6gNonUZ2>l9OTBN>hk81
+R1
+Z5 w1443830873
+8C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/SwitchValidator.v
+FC:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/SwitchValidator.v
+L0 1
+R2
+r1
+31
+R3
+R4
+n@switch@validator
+!i10b 1
+!s100 4H[eJR:I[bdn5]I@XIlbD3
+!s85 0
+!s108 1446411426.735000
+!s107 C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/SwitchValidator.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan|C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/SwitchValidator.v|
+!s101 -O0
+vTimerController
+IT0j5]=o>=XiYk5jM;6fOG1
+V9X5Y0z6<9?BP^Ejk7TRR22
+R1
+R5
+8C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/timercontroller.v
+FC:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/timercontroller.v
+L0 1
+R2
+r1
+31
+R3
+R4
+n@timer@controller
+!i10b 1
+!s100 L[j1EPOfX`PaP`X7]=<@Z1
+!s85 0
+!s108 1446411426.978000
+!s107 C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/timercontroller.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan|C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/timercontroller.v|
+!s101 -O0
+vTimerController_testbench
+!i10b 1
+!s100 TK^SJlk@^VzDE6M<Vfc:H2
+I9YM]D2RF1oA2RDeK7]gZ51
+Ve[8=He^568FYcK5icfPlk1
+R1
+w1446411404
+8C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/TimerController_testbench.v
+FC:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/TimerController_testbench.v
+L0 3
+R2
+r1
+!s85 0
+31
+!s108 1446411427.289000
+!s107 C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/TimerController_testbench.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan|C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/TimerController_testbench.v|
+!s101 -O0
+R3
+R4
+n@timer@controller_testbench

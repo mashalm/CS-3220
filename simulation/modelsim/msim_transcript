@@ -1,0 +1,88 @@
+# Reading C:/altera/13.0sp1/modelsim_ase/tcl/vsim/pref.tcl 
+# ERROR: No extended dataflow license exists
+# do EggTimerController_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying C:\altera\13.0sp1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied C:\altera\13.0sp1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan {C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/EggTimerController.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module EggTimerController
+# 
+# Top level modules:
+# 	EggTimerController
+# vlog -vlog01compat -work work +incdir+C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan {C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/dec2_7seg.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module dec2_7seg
+# 
+# Top level modules:
+# 	dec2_7seg
+# vlog -vlog01compat -work work +incdir+C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan {C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/ClockDivider.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module ClockDivider
+# 
+# Top level modules:
+# 	ClockDivider
+# vlog -vlog01compat -work work +incdir+C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan {C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/DecrementTime.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module DecrementTime
+# 
+# Top level modules:
+# 	DecrementTime
+# vlog -vlog01compat -work work +incdir+C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan {C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/flashLights.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module flashLights
+# 
+# Top level modules:
+# 	flashLights
+# vlog -vlog01compat -work work +incdir+C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan {C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/SwitchValidator.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module SwitchValidator
+# 
+# Top level modules:
+# 	SwitchValidator
+# vlog -vlog01compat -work work +incdir+C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan {C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/timercontroller.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module TimerController
+# 
+# Top level modules:
+# 	TimerController
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan {C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/TimerController_testbench.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module TimerController_testbench
+# 
+# Top level modules:
+# 	TimerController_testbench
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneii_ver -L rtl_work -L work -voptargs="+acc"  TimerController_testbench
+# vsim -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneii_ver -L rtl_work -L work -voptargs=\"+acc\" -t 1ps TimerController_testbench 
+# Loading work.TimerController_testbench
+# Loading work.TimerController
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+# reset = 0, set = x, startStop = x, isTimeFlat = x, swSecEn = 0, swMinEn = 0, decEn = 0, flashEn = 0, inRunTimerState = 0
+# reset = 0, set = 0, startStop = 0, isTimeFlat = 0, swSecEn = 1, swMinEn = 0, decEn = 0, flashEn = 0, inRunTimerState = 0
+# reset = 0, set = 0, startStop = 1, isTimeFlat = 0, swSecEn = 1, swMinEn = 0, decEn = 0, flashEn = 0, inRunTimerState = 0
+# reset = 0, set = 1, startStop = 0, isTimeFlat = 0, swSecEn = 0, swMinEn = 1, decEn = 0, flashEn = 0, inRunTimerState = 0
+# reset = 0, set = 1, startStop = 0, isTimeFlat = 0, swSecEn = 0, swMinEn = 0, decEn = 0, flashEn = 0, inRunTimerState = 0
+# reset = 0, set = 1, startStop = 0, isTimeFlat = 0, swSecEn = 0, swMinEn = 0, decEn = 0, flashEn = 0, inRunTimerState = 0
+# reset = 0, set = 0, startStop = 1, isTimeFlat = 0, swSecEn = 0, swMinEn = 0, decEn = 1, flashEn = 0, inRunTimerState = 1
+# ** Note: $finish    : C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/TimerController_testbench.v(64)
+#    Time: 70 ns  Iteration: 0  Instance: /TimerController_testbench
+# 1
+# Break in Module TimerController_testbench at C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/TimerController_testbench.v line 64
+# Simulation Breakpoint: 1
+# Break in Module TimerController_testbench at C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/TimerController_testbench.v line 64
+# MACRO ./EggTimerController_run_msim_rtl_verilog.do PAUSED at line 23

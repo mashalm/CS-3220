@@ -1,5 +1,5 @@
 Analysis & Synthesis report for EggTimerController
-Fri Oct 02 21:12:22 2015
+Sun Nov 01 15:59:09 2015
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -49,15 +49,15 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Oct 02 21:12:21 2015           ;
+; Analysis & Synthesis Status        ; Successful - Sun Nov 01 15:59:09 2015           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; EggTimerController                              ;
 ; Top-level Entity Name              ; EggTimerController                              ;
 ; Family                             ; Cyclone II                                      ;
-; Total logic elements               ; 133                                             ;
-;     Total combinational functions  ; 125                                             ;
-;     Dedicated logic registers      ; 64                                              ;
-; Total registers                    ; 64                                              ;
+; Total logic elements               ; 141                                             ;
+;     Total combinational functions  ; 133                                             ;
+;     Dedicated logic registers      ; 70                                              ;
+; Total registers                    ; 70                                              ;
 ; Total pins                         ; 50                                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
@@ -162,19 +162,19 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                              ;
-+----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                          ; Library ;
-+----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------+---------+
-; EggTimerController.v             ; yes             ; User Verilog HDL File        ; C:/Users/Mashal/Documents/2015-Fall/CS3220/Proj2/EggTimerController.v ;         ;
-; dec2_7seg.v                      ; yes             ; User Verilog HDL File        ; C:/Users/Mashal/Documents/2015-Fall/CS3220/Proj2/dec2_7seg.v          ;         ;
-; ClockDivider.v                   ; yes             ; User Verilog HDL File        ; C:/Users/Mashal/Documents/2015-Fall/CS3220/Proj2/ClockDivider.v       ;         ;
-; DecrementTime.v                  ; yes             ; User Verilog HDL File        ; C:/Users/Mashal/Documents/2015-Fall/CS3220/Proj2/DecrementTime.v      ;         ;
-; flashLights.v                    ; yes             ; User Verilog HDL File        ; C:/Users/Mashal/Documents/2015-Fall/CS3220/Proj2/flashLights.v        ;         ;
-; SwitchValidator.v                ; yes             ; User Verilog HDL File        ; C:/Users/Mashal/Documents/2015-Fall/CS3220/Proj2/SwitchValidator.v    ;         ;
-; timercontroller.v                ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/Mashal/Documents/2015-Fall/CS3220/Proj2/timercontroller.v    ;         ;
-+----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------+---------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                          ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                      ; Library ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------+---------+
+; EggTimerController.v             ; yes             ; User Verilog HDL File        ; C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/EggTimerController.v ;         ;
+; dec2_7seg.v                      ; yes             ; User Verilog HDL File        ; C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/dec2_7seg.v          ;         ;
+; ClockDivider.v                   ; yes             ; User Verilog HDL File        ; C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/ClockDivider.v       ;         ;
+; DecrementTime.v                  ; yes             ; User Verilog HDL File        ; C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/DecrementTime.v      ;         ;
+; flashLights.v                    ; yes             ; User Verilog HDL File        ; C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/flashLights.v        ;         ;
+; SwitchValidator.v                ; yes             ; User Verilog HDL File        ; C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/SwitchValidator.v    ;         ;
+; timercontroller.v                ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/timercontroller.v    ;         ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------+---------+
 
 
 +--------------------------------------------------------+
@@ -182,28 +182,28 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+----------+
 ; Resource                                    ; Usage    ;
 +---------------------------------------------+----------+
-; Estimated Total logic elements              ; 133      ;
+; Estimated Total logic elements              ; 141      ;
 ;                                             ;          ;
-; Total combinational functions               ; 125      ;
+; Total combinational functions               ; 133      ;
 ; Logic element usage by number of LUT inputs ;          ;
-;     -- 4 input functions                    ; 55       ;
-;     -- 3 input functions                    ; 39       ;
-;     -- <=2 input functions                  ; 31       ;
+;     -- 4 input functions                    ; 59       ;
+;     -- 3 input functions                    ; 37       ;
+;     -- <=2 input functions                  ; 37       ;
 ;                                             ;          ;
 ; Logic elements by mode                      ;          ;
-;     -- normal mode                          ; 100      ;
-;     -- arithmetic mode                      ; 25       ;
+;     -- normal mode                          ; 102      ;
+;     -- arithmetic mode                      ; 31       ;
 ;                                             ;          ;
-; Total registers                             ; 64       ;
-;     -- Dedicated logic registers            ; 64       ;
+; Total registers                             ; 70       ;
+;     -- Dedicated logic registers            ; 70       ;
 ;     -- I/O registers                        ; 0        ;
 ;                                             ;          ;
 ; I/O pins                                    ; 50       ;
 ; Embedded Multiplier 9-bit elements          ; 0        ;
 ; Maximum fan-out node                        ; CLOCK_50 ;
-; Maximum fan-out                             ; 64       ;
-; Total fan-out                               ; 636      ;
-; Average fan-out                             ; 2.66     ;
+; Maximum fan-out                             ; 70       ;
+; Total fan-out                               ; 676      ;
+; Average fan-out                             ; 2.67     ;
 +---------------------------------------------+----------+
 
 
@@ -212,16 +212,16 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +-----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------+--------------+
 ; Compilation Hierarchy Node  ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                        ; Library Name ;
 +-----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------+--------------+
-; |EggTimerController         ; 125 (12)          ; 64 (0)       ; 0           ; 0            ; 0       ; 0         ; 50   ; 0            ; |EggTimerController                        ; work         ;
-;    |ClockDivider:cd|        ; 36 (36)           ; 27 (27)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EggTimerController|ClockDivider:cd        ; work         ;
+; |EggTimerController         ; 133 (13)          ; 70 (0)       ; 0           ; 0            ; 0       ; 0         ; 50   ; 0            ; |EggTimerController                        ; work         ;
+;    |ClockDivider:cd|        ; 44 (44)           ; 33 (33)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EggTimerController|ClockDivider:cd        ; work         ;
 ;    |DecrementTime:decMins|  ; 13 (13)           ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EggTimerController|DecrementTime:decMins  ; work         ;
-;    |DecrementTime:decSecs|  ; 13 (13)           ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EggTimerController|DecrementTime:decSecs  ; work         ;
+;    |DecrementTime:decSecs|  ; 12 (12)           ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EggTimerController|DecrementTime:decSecs  ; work         ;
 ;    |SwitchValidator:svMins| ; 11 (11)           ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EggTimerController|SwitchValidator:svMins ; work         ;
 ;    |SwitchValidator:svSecs| ; 1 (1)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EggTimerController|SwitchValidator:svSecs ; work         ;
 ;    |TimerController:sm|     ; 7 (7)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EggTimerController|TimerController:sm     ; work         ;
-;    |dec2_7seg:d1|           ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EggTimerController|dec2_7seg:d1           ; work         ;
+;    |dec2_7seg:d1|           ; 9 (9)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EggTimerController|dec2_7seg:d1           ; work         ;
 ;    |dec2_7seg:d2|           ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EggTimerController|dec2_7seg:d2           ; work         ;
-;    |dec2_7seg:d3|           ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EggTimerController|dec2_7seg:d3           ; work         ;
+;    |dec2_7seg:d3|           ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EggTimerController|dec2_7seg:d3           ; work         ;
 ;    |dec2_7seg:d4|           ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |EggTimerController|dec2_7seg:d4           ; work         ;
 +-----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -274,8 +274,8 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 64    ;
-; Number of registers using Synchronous Clear  ; 34    ;
+; Total registers                              ; 70    ;
+; Number of registers using Synchronous Clear  ; 40    ;
 ; Number of registers using Synchronous Load   ; 8     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
@@ -289,19 +289,19 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                              ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |EggTimerController|SwitchValidator:svSecs|swVal[3]     ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |EggTimerController|SwitchValidator:svMins|swVal[3]     ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |EggTimerController|DecrementTime:decMins|outputTime[4] ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |EggTimerController|DecrementTime:decMins|outputTime[2] ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |EggTimerController|DecrementTime:decSecs|outputTime[7] ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |EggTimerController|DecrementTime:decSecs|outputTime[3] ;
-; 5:1                ; 26 bits   ; 78 LEs        ; 26 LEs               ; 52 LEs                 ; Yes        ; |EggTimerController|ClockDivider:cd|counter[13]         ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |EggTimerController|SwitchValidator:svSecs|swVal[2]     ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |EggTimerController|SwitchValidator:svMins|swVal[2]     ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |EggTimerController|DecrementTime:decMins|outputTime[7] ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |EggTimerController|DecrementTime:decMins|outputTime[3] ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |EggTimerController|DecrementTime:decSecs|outputTime[6] ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |EggTimerController|DecrementTime:decSecs|outputTime[1] ;
+; 5:1                ; 32 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; Yes        ; |EggTimerController|ClockDivider:cd|counter[26]         ;
 ; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |EggTimerController|SwitchValidator:svSecs|swVal[7]     ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |EggTimerController|SwitchValidator:svMins|swVal[7]     ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |EggTimerController|dec2_7seg:d4|display[0]             ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |EggTimerController|dec2_7seg:d3|display[5]             ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |EggTimerController|dec2_7seg:d2|display[0]             ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |EggTimerController|dec2_7seg:d1|display[5]             ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |EggTimerController|SwitchValidator:svMins|swVal[6]     ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |EggTimerController|dec2_7seg:d4|display[6]             ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |EggTimerController|dec2_7seg:d3|display[6]             ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |EggTimerController|dec2_7seg:d2|display[6]             ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |EggTimerController|dec2_7seg:d1|display[0]             ;
 ; 9:1                ; 3 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; No         ; |EggTimerController|TimerController:sm|Selector5        ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
 
@@ -357,7 +357,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Fri Oct 02 21:12:20 2015
+    Info: Processing started: Sun Nov 01 15:59:07 2015
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off EggTimerController -c EggTimerController
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file eggtimercontroller.v
@@ -374,6 +374,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file flashli
 Info (12021): Found 1 design units, including 1 entities, in source file switchvalidator.v
     Info (12023): Found entity 1: SwitchValidator
 Warning (12019): Can't analyze file -- file decrementMux.v is missing
+Info (12021): Found 1 design units, including 1 entities, in source file timercontroller_testbench.v
+    Info (12023): Found entity 1: TimerController_testbench
 Warning (10236): Verilog HDL Implicit Net warning at EggTimerController.v(24): created implicit net for "minsIsDone"
 Warning (10236): Verilog HDL Implicit Net warning at EggTimerController.v(24): created implicit net for "secsIsDone"
 Warning (10236): Verilog HDL Implicit Net warning at EggTimerController.v(25): created implicit net for "flashEn"
@@ -388,7 +390,6 @@ Warning (10270): Verilog HDL Case Statement warning at timercontroller.v(17): in
 Info (10264): Verilog HDL Case Statement information at timercontroller.v(17): all case item expressions in this case statement are onehot
 Info (12128): Elaborating entity "SwitchValidator" for hierarchy "SwitchValidator:svSecs"
 Info (12128): Elaborating entity "ClockDivider" for hierarchy "ClockDivider:cd"
-Warning (10230): Verilog HDL assignment warning at ClockDivider.v(14): truncated value with size 32 to match size of target (26)
 Info (12128): Elaborating entity "DecrementTime" for hierarchy "DecrementTime:decSecs"
 Warning (10230): Verilog HDL assignment warning at DecrementTime.v(17): truncated value with size 32 to match size of target (4)
 Info (12128): Elaborating entity "flashLights" for hierarchy "flashLights:fl"
@@ -405,16 +406,16 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "LEDR[8]" is stuck at GND
     Warning (13410): Pin "LEDR[9]" is stuck at GND
 Info (17049): 3 registers lost all their fanouts during netlist optimizations.
-Info (144001): Generated suppressed messages file C:/Users/Mashal/Documents/2015-Fall/CS3220/Proj2/output_files/EggTimerController.map.smsg
+Info (144001): Generated suppressed messages file C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/output_files/EggTimerController.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 191 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 199 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 12 input pins
     Info (21059): Implemented 38 output pins
-    Info (21061): Implemented 141 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 24 warnings
-    Info: Peak virtual memory: 480 megabytes
-    Info: Processing ended: Fri Oct 02 21:12:22 2015
+    Info (21061): Implemented 149 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 23 warnings
+    Info: Peak virtual memory: 484 megabytes
+    Info: Processing ended: Sun Nov 01 15:59:09 2015
     Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:01
 
@@ -422,6 +423,6 @@ Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 24 warnin
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in C:/Users/Mashal/Documents/2015-Fall/CS3220/Proj2/output_files/EggTimerController.map.smsg.
+The suppressed messages can be found in C:/Users/Mashal/Documents/2015-Fall/CS3220/TimerMashalMannan/output_files/EggTimerController.map.smsg.
 
 
