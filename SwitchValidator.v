@@ -1,15 +1,14 @@
-module SwitchValidator(clk, reset, readSwEn, switches, swVal);
+module SwitchValidator(clk, readSwEn, switches, swVal);
 
-	input clk, reset, readSwEn;
+	input clk, readSwEn;
 	input[7:0] switches;
 	output[7:0] swVal;
 	
 	reg[7:0] swVal;
 	
 	always @(posedge clk) begin
-		if(reset == 1'b1)
-			swVal <= 8'b00000000;
-		else if(readSwEn == 1'b1) begin
+		if(readSwEn == 1'b1) begin
+			swVal <= switches[7:0];
 			//if the MSB > 5 set it to 5
 			if(switches[7:4] > 4'b0101)
 				swVal[7:4] <= 4'b0101;

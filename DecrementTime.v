@@ -14,7 +14,7 @@ module DecrementTime(clk, reset, inputTime, wrtEn, decEnable, outputTime, isZero
 		else if(wrtEn == 1'b1)
 			outputTime <= inputTime;
 		else if(decEnable == 1'b1) begin
-			outputTime[3:0] <= inputTime[3:0] - 1;
+			outputTime[3:0] <= inputTime[3:0] - 1'b1;
 			if(outputTime[3:0] == 4'b0000) begin
 				//if you're at 00, make it 59
 				outputTime[3:0] <= 4'b1001;

@@ -1,5 +1,5 @@
 Design Assistant report for EggTimerController
-Sun Nov 01 15:59:19 2015
+Sun Nov 01 16:45:00 2015
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -36,15 +36,15 @@ applicable agreement for further details.
 +-------------------------------------------------------------------------+
 ; Design Assistant Summary                                                ;
 +-----------------------------------+-------------------------------------+
-; Design Assistant Status           ; Analyzed - Sun Nov 01 15:59:19 2015 ;
+; Design Assistant Status           ; Analyzed - Sun Nov 01 16:45:00 2015 ;
 ; Revision Name                     ; EggTimerController                  ;
 ; Top-level Entity Name             ; EggTimerController                  ;
 ; Family                            ; Cyclone II                          ;
 ; Total Critical Violations         ; 0                                   ;
 ; Total High Violations             ; 0                                   ;
 ; Total Medium Violations           ; 0                                   ;
-; Total Information only Violations ; 53                                  ;
-; - Rule T101                       ; 3                                   ;
+; Total Information only Violations ; 52                                  ;
+; - Rule T101                       ; 2                                   ;
 ; - Rule T102                       ; 50                                  ;
 +-----------------------------------+-------------------------------------+
 
@@ -95,65 +95,64 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+----+
 
 
-+--------------------------------------------------------------------------------------------------------------------+
-; Information only Violations                                                                                        ;
-+------------------------------------------------------------------+---------------------------------------+---------+
-; Rule name                                                        ; Name                                  ; Fan-Out ;
-+------------------------------------------------------------------+---------------------------------------+---------+
-; Rule T101: Nodes with more than the specified number of fan-outs ; KEY[0]                                ; 37      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; CLOCK_50~clkctrl                      ; 70      ;
-; Rule T101: Nodes with more than the specified number of fan-outs ; ClockDivider:cd|counter[26]~34        ; 32      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; CLOCK_50~clkctrl                      ; 70      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; KEY[0]                                ; 37      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[26]~34        ; 32      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; TimerController:sm|state.SetSec       ; 23      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; TimerController:sm|state.SetMin       ; 22      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; comb~4                                ; 10      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; comb~5                                ; 10      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; comb~11                               ; 10      ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; comb~3                                ; 9       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; comb~10                               ; 9       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; dec2_7seg:d1|display[0]~0             ; 9       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; comb~12                               ; 8       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; comb~6                                ; 8       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; dec2_7seg:d4|display[6]~0             ; 7       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; comb~0                                ; 7       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; comb~1                                ; 7       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; dec2_7seg:d2|display[6]~0             ; 7       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; comb~9                                ; 7       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; TimerController:sm|state.RunTimer     ; 7       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; comb~8                                ; 7       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; comb~7                                ; 7       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; comb~2                                ; 7       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; SwitchValidator:svMins|swVal[6]~0     ; 6       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; DecrementTime:decMins|Equal0~0        ; 5       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; DecrementTime:decSecs|outputTime[6]~3 ; 5       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|clockReg              ; 5       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; DecrementTime:decSecs|Equal0~0        ; 5       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; DecrementTime:decMins|outputTime[7]~3 ; 5       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; DecrementTime:decMins|outputTime[3]~9 ; 4       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; SwitchValidator:svSecs|swVal[0]       ; 4       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; DecrementTime:decMins|outputTime[7]~4 ; 4       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; SW[3]                                 ; 4       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; KEY[2]                                ; 4       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; DecrementTime:decSecs|outputTime[0]   ; 4       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; SwitchValidator:svMins|swVal[6]~3     ; 4       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; DecrementTime:decSecs|outputTime[1]~8 ; 4       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; DecrementTime:decSecs|outputTime[6]~4 ; 4       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; SwitchValidator:svSecs|swVal[7]~0     ; 4       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; DecrementTime:decMins|outputTime[0]   ; 3       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; TimerController:sm|state.SetTimer     ; 3       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; SwitchValidator:svMins|swVal[0]       ; 3       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; KEY[1]                                ; 3       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; DecrementTime:decMins|outputTime[2]   ; 2       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; SwitchValidator:svMins|swVal[3]       ; 2       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[7]            ; 2       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[9]            ; 2       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[21]           ; 2       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[22]           ; 2       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[20]           ; 2       ;
-; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[19]           ; 2       ;
-+------------------------------------------------------------------+---------------------------------------+---------+
++----------------------------------------------------------------------------------------------------------------+
+; Information only Violations                                                                                    ;
++------------------------------------------------------------------+-----------------------------------+---------+
+; Rule name                                                        ; Name                              ; Fan-Out ;
++------------------------------------------------------------------+-----------------------------------+---------+
+; Rule T101: Nodes with more than the specified number of fan-outs ; ClockDivider:cd|counter[0]~34     ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; CLOCK_50~clkctrl                  ; 49      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; CLOCK_50~clkctrl                  ; 49      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[0]~34     ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; comb~0                            ; 10      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; KEY[0]                            ; 9       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; TimerController:sm|state.Flash    ; 6       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; TimerController:sm|state.RunTimer ; 5       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; KEY[2]                            ; 4       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; KEY[1]                            ; 4       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; TimerController:sm|state.SetTimer ; 4       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[23]       ; 3       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[6]        ; 3       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[7]        ; 3       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[16]       ; 3       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[18]       ; 3       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[17]       ; 3       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[15]       ; 3       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[11]       ; 3       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; TimerController:sm|state.SetMin   ; 3       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; TimerController:sm|state.SetSec   ; 3       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[25]       ; 3       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[24]       ; 3       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[0]        ; 2       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[3]        ; 2       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[28]       ; 2       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[20]       ; 2       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|clockReg~15       ; 2       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[5]        ; 2       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[13]       ; 2       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; TimerController:sm|state.Reset    ; 2       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[26]       ; 2       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[19]       ; 2       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[9]        ; 2       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[10]       ; 2       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[22]       ; 2       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[14]       ; 2       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[27]       ; 2       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[1]        ; 2       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[2]        ; 2       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[12]       ; 2       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[8]        ; 2       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[21]       ; 2       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[29]       ; 2       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[30]       ; 2       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[31]       ; 2       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[4]        ; 2       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|clockReg          ; 2       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|clockReg~1        ; 1       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[9]~52     ; 1       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[21]~76    ; 1       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ClockDivider:cd|counter[5]~43     ; 1       ;
++------------------------------------------------------------------+-----------------------------------+---------+
 
 
 +---------------------------+
@@ -162,50 +161,49 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Design Assistant
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Sun Nov 01 15:59:19 2015
+    Info: Processing started: Sun Nov 01 16:45:00 2015
 Info: Command: quartus_drc --read_settings_files=off --write_settings_files=off EggTimerController -c EggTimerController
 Critical Warning (332012): Synopsys Design Constraints File file not found: 'EggTimerController.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
 Info (332144): No user constrained base clocks found in the design
-Info (308046): (Information) Rule T101: Nodes with more than the specified number of fan-outs. (Value defined:30). Found 3 node(s) with highest fan-out.
-    Info (308011): Node  "KEY[0]"
+Info (308046): (Information) Rule T101: Nodes with more than the specified number of fan-outs. (Value defined:30). Found 2 node(s) with highest fan-out.
+    Info (308011): Node  "ClockDivider:cd|counter[0]~34"
     Info (308011): Node  "CLOCK_50~clkctrl"
-    Info (308011): Node  "ClockDivider:cd|counter[26]~34"
 Info (308044): (Information) Rule T102: Top nodes with the highest number of fan-outs. (Value defined:50). Found 50 node(s) with highest fan-out.
     Info (308011): Node  "CLOCK_50~clkctrl"
-    Info (308011): Node  "KEY[0]"
-    Info (308011): Node  "ClockDivider:cd|counter[26]~34"
-    Info (308011): Node  "TimerController:sm|state.SetSec"
-    Info (308011): Node  "TimerController:sm|state.SetMin"
-    Info (308011): Node  "comb~4"
-    Info (308011): Node  "comb~5"
-    Info (308011): Node  "comb~11"
-    Info (308011): Node  "comb~3"
-    Info (308011): Node  "comb~10"
-    Info (308011): Node  "dec2_7seg:d1|display[0]~0"
-    Info (308011): Node  "comb~12"
-    Info (308011): Node  "comb~6"
-    Info (308011): Node  "dec2_7seg:d4|display[6]~0"
+    Info (308011): Node  "ClockDivider:cd|counter[0]~34"
     Info (308011): Node  "comb~0"
-    Info (308011): Node  "comb~1"
-    Info (308011): Node  "dec2_7seg:d2|display[6]~0"
-    Info (308011): Node  "comb~9"
+    Info (308011): Node  "KEY[0]"
+    Info (308011): Node  "TimerController:sm|state.Flash"
     Info (308011): Node  "TimerController:sm|state.RunTimer"
-    Info (308011): Node  "comb~8"
-    Info (308011): Node  "comb~7"
-    Info (308011): Node  "comb~2"
-    Info (308011): Node  "SwitchValidator:svMins|swVal[6]~0"
-    Info (308011): Node  "DecrementTime:decMins|Equal0~0"
-    Info (308011): Node  "DecrementTime:decSecs|outputTime[6]~3"
-    Info (308011): Node  "ClockDivider:cd|clockReg"
-    Info (308011): Node  "DecrementTime:decSecs|Equal0~0"
-    Info (308011): Node  "DecrementTime:decMins|outputTime[7]~3"
-    Info (308011): Node  "DecrementTime:decMins|outputTime[3]~9"
-    Info (308011): Node  "SwitchValidator:svSecs|swVal[0]"
+    Info (308011): Node  "KEY[2]"
+    Info (308011): Node  "KEY[1]"
+    Info (308011): Node  "TimerController:sm|state.SetTimer"
+    Info (308011): Node  "ClockDivider:cd|counter[23]"
+    Info (308011): Node  "ClockDivider:cd|counter[6]"
+    Info (308011): Node  "ClockDivider:cd|counter[7]"
+    Info (308011): Node  "ClockDivider:cd|counter[16]"
+    Info (308011): Node  "ClockDivider:cd|counter[18]"
+    Info (308011): Node  "ClockDivider:cd|counter[17]"
+    Info (308011): Node  "ClockDivider:cd|counter[15]"
+    Info (308011): Node  "ClockDivider:cd|counter[11]"
+    Info (308011): Node  "TimerController:sm|state.SetMin"
+    Info (308011): Node  "TimerController:sm|state.SetSec"
+    Info (308011): Node  "ClockDivider:cd|counter[25]"
+    Info (308011): Node  "ClockDivider:cd|counter[24]"
+    Info (308011): Node  "ClockDivider:cd|counter[0]"
+    Info (308011): Node  "ClockDivider:cd|counter[3]"
+    Info (308011): Node  "ClockDivider:cd|counter[28]"
+    Info (308011): Node  "ClockDivider:cd|counter[20]"
+    Info (308011): Node  "ClockDivider:cd|clockReg~15"
+    Info (308011): Node  "ClockDivider:cd|counter[5]"
+    Info (308011): Node  "ClockDivider:cd|counter[13]"
+    Info (308011): Node  "TimerController:sm|state.Reset"
+    Info (308011): Node  "ClockDivider:cd|counter[26]"
     Info (308002): Truncated list of Design Assistant messages to 30 messages. Go to sections under Design Assistant section of Compilation Report for complete lists of Design Assistant messages generated.
-Info (308007): Design Assistant information: finished post-fitting analysis of current design -- generated 53 information messages and 0 warning messages
+Info (308007): Design Assistant information: finished post-fitting analysis of current design -- generated 52 information messages and 0 warning messages
 Info: Quartus II 64-Bit Design Assistant was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 408 megabytes
-    Info: Processing ended: Sun Nov 01 15:59:19 2015
+    Info: Peak virtual memory: 403 megabytes
+    Info: Processing ended: Sun Nov 01 16:45:00 2015
     Info: Elapsed time: 00:00:00
     Info: Total CPU time (on all processors): 00:00:00
 

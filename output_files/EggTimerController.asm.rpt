@@ -1,5 +1,5 @@
 Assembler report for EggTimerController
-Sun Nov 01 15:59:16 2015
+Sun Nov 01 16:44:58 2015
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Sun Nov 01 15:59:16 2015 ;
+; Assembler Status      ; Successful - Sun Nov 01 16:44:58 2015 ;
 ; Revision Name         ; EggTimerController                    ;
 ; Top-level Entity Name ; EggTimerController                    ;
 ; Family                ; Cyclone II                            ;
@@ -94,8 +94,8 @@ applicable agreement for further details.
 ; Option         ; Setting                                                                                                   ;
 +----------------+-----------------------------------------------------------------------------------------------------------+
 ; Device         ; EP2C20F484C7                                                                                              ;
-; JTAG usercode  ; 0x001BC37F                                                                                                ;
-; Checksum       ; 0x001BC37F                                                                                                ;
+; JTAG usercode  ; 0x001AF5FA                                                                                                ;
+; Checksum       ; 0x001AF5FA                                                                                                ;
 +----------------+-----------------------------------------------------------------------------------------------------------+
 
 
@@ -106,7 +106,7 @@ applicable agreement for further details.
 +--------------------+-------------------------------------------------------------------------------------------------------+
 ; Device             ; EPCS16                                                                                                ;
 ; JTAG usercode      ; 0x00000000                                                                                            ;
-; Checksum           ; 0x1DD5201C                                                                                            ;
+; Checksum           ; 0x1DD84627                                                                                            ;
 ; Compression Ratio  ; 3                                                                                                     ;
 +--------------------+-------------------------------------------------------------------------------------------------------+
 
@@ -117,14 +117,14 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Sun Nov 01 15:59:15 2015
+    Info: Processing started: Sun Nov 01 16:44:56 2015
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off EggTimerController -c EggTimerController
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 444 megabytes
-    Info: Processing ended: Sun Nov 01 15:59:16 2015
-    Info: Elapsed time: 00:00:01
+    Info: Peak virtual memory: 428 megabytes
+    Info: Processing ended: Sun Nov 01 16:44:58 2015
+    Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:01
 
 
